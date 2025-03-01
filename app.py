@@ -61,14 +61,14 @@ except Exception as e:
         """
         <style>
         .stApp {
-            background: linear-gradient(135deg, #f5f5f5, #ffffff);
+            background: linear-gradient(135deg, #1c3b5a, #0a192f);
         }
         </style>
         """,
         unsafe_allow_html=True
     )
 
-# Custom CSS for advanced form styling - MODIFIED for white background
+# Custom CSS for advanced form styling
 st.markdown(
     """
     <style>
@@ -80,43 +80,52 @@ st.markdown(
         /* Main title styling */
         .main-title {
             text-align: center;
-            color: #004080;
+            color: #003366;
             font-size: 3.5rem;
             font-weight: 800;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
             margin: 1.5rem 0;
-            background: linear-gradient(90deg, #004080, #0066cc);
+            background: linear-gradient(90deg, #FF5F6D, #FFC371);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             padding: 20px;
-            background-color: rgba(255, 255, 255, 0.85);
+            background-color: rgba(0, 0, 0, 0.5);
             border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            animation: glow 2s ease-in-out infinite alternate;
         }
         
-        /* Form container styling - MODIFIED for white background */
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 5px #fff, 0 0 10px #ff9e00, 0 0 15px #ff9e00;
+            }
+            to {
+                text-shadow: 0 0 10px #fff, 0 0 20px #ff9e00, 0 0 30px #ff9e00;
+            }
+        }
+        
+        /* Form container styling - ENHANCED with higher opacity for better contrast against video */
         .form-container {
-            background-color: rgba(255, 255, 255, 0.92);
+            background-color: rgba(20, 20, 20, 0.95);
             border-radius: 20px;
             padding: 30px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
             margin: 20px 0;
-            border-left: 5px solid #004080;
+            border-left: 5px solid #FF9E00;
             transition: all 0.3s ease;
         }
         
         .form-container:hover {
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
             transform: translateY(-5px);
         }
         
-        /* Section headers - MODIFIED color */
+        /* Section headers */
         .section-header {
-            color: #004080;
+            color: #FF9E00;
             font-size: 2rem;
             font-weight: 600;
             margin-bottom: 25px;
-            border-bottom: 2px solid #004080;
+            border-bottom: 2px solid #FF9E00;
             padding-bottom: 15px;
             text-align: center;
         }
@@ -126,77 +135,75 @@ st.markdown(
         .stNumberInput>div>div>input {
             border-radius: 10px;
             padding: 12px 15px;
-            border: 2px solid #0066cc;
+            border: 2px solid #ddd;
             transition: all 0.3s ease;
             box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
             margin-bottom: 12px;
             font-size: 16px;
             width: 100%;
-            color: #333333;
         }
         
         .stTextInput>div>div>input:focus, 
         .stNumberInput>div>div>input:focus {
-            border-color: #0066cc;
-            box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.2);
+            border-color: #FF9E00;
+            box-shadow: 0 0 0 3px rgba(255, 158, 0, 0.2);
             transform: translateY(-2px);
         }
         
-        /* Label styling - MODIFIED color */
+        /* Label styling */
         .stTextInput label, .stNumberInput label, .stSelectbox label, .css-16huue1 {
             font-weight: 600 !important;
             font-size: 17px !important;
-            color: #333333 !important;
+            color: #333 !important;
             margin-bottom: 8px !important;
         }
         
         /* Input field container */
         .input-container {
             margin-bottom: 25px;
-            border-bottom: 1px dashed #cccccc;
+            border-bottom: 1px dashed #eee;
             padding-bottom: 15px;
             transition: all 0.3s ease;
         }
         
         .input-container:hover {
-            border-bottom-color: #0066cc;
+            border-bottom-color: #FF9E00;
         }
         
         /* Select box styling */
         .stSelectbox>div>div {
             border-radius: 10px !important;
-            border: 2px solid #0066cc !important;
+            border: 2px solid #ddd !important;
             margin-bottom: 12px;
         }
         
         .stSelectbox>div>div:focus-within {
-            border-color: #0066cc !important;
-            box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.2) !important;
+            border-color: #FF9E00 !important;
+            box-shadow: 0 0 0 3px rgba(255, 158, 0, 0.2) !important;
         }
         
         /* Radio button styling */
         .stRadio>div {
-            background-color: rgba(255, 255, 255, 0.9);
+            background-color: rgba(255, 255, 255, 0.8);
             padding: 15px;
             border-radius: 10px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             margin-bottom: 12px;
-            border: 1px solid #cccccc;
-            color: #333333;
+            border: 1px solid #eee;
         }
         
         .stRadio>div:hover {
-            border-color: #0066cc;
+            border-color: #FF9E00;
         }
         
         /* Slider styling */
         .stSlider>div>div>div>div {
-            background-color: #0066cc !important;
+            background-color: #FF9E00 !important;
         }
         
-        /* Button styling - MODIFIED colors */
+        /* Button styling */
         .stButton>button {
-            background: linear-gradient(90deg, #004080, #0066cc);
+            background: linear-gradient(90deg, #FF5F6D, #FFC371);
             color: white;
             font-weight: 600;
             border-radius: 10px;
@@ -214,7 +221,7 @@ st.markdown(
         .stButton>button:hover {
             transform: translateY(-3px);
             box-shadow: 0 7px 20px rgba(0, 0, 0, 0.3);
-            background: linear-gradient(90deg, #0066cc, #0099ff);
+            background: linear-gradient(90deg, #FF5F6D, #FFC371);
         }
         
         .stButton>button:active {
@@ -237,10 +244,10 @@ st.markdown(
             to { opacity: 1; transform: translateY(0); }
         }
         
-        /* Sidebar styling - MODIFIED for better contrast */
+        /* Sidebar styling - ENHANCED */
         [data-testid="stSidebar"] {
-            background: linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(240, 240, 240, 0.9)) !important;
-            box-shadow: 2px 0 15px rgba(0, 0, 0, 0.1);
+            background: linear-gradient(180deg, rgba(20, 40, 80, 0.95), rgba(30, 60, 100, 0.9)) !important;
+            box-shadow: 2px 0 15px rgba(0, 0, 0, 0.3);
         }
         
         [data-testid="stSidebar"] .block-container {
@@ -249,50 +256,41 @@ st.markdown(
         
         /* Input field tooltip icon */
         .stTooltipIcon {
-            color: #0066cc !important;
+            color: #FF9E00 !important;
             font-size: 20px !important;
         }
         
-        /* Form group styling - MODIFIED background and colors */
+        /* Tooltip content styling */
+        .stMarkdown div[data-testid="stMarkdownContainer"] p {
+            font-size: 15px !important;
+            line-height: 1.6 !important;
+        }
+        
+        /* Form group styling */
         .form-group {
-            background-color: rgba(240, 248, 255, 0.8);
+            background-color: rgba(255, 255, 255, 0.8);
             border-radius: 12px;
             padding: 20px;
             margin-bottom: 20px;
             box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
-            border-left: 4px solid #0066cc;
+            border-left: 4px solid #FF9E00;
         }
         
         .form-group-title {
             font-size: 18px;
             font-weight: 600;
-            color: #004080;
+            color: #FF9E00;
             margin-bottom: 15px;
-            border-bottom: 1px solid #cccccc;
+            border-bottom: 1px solid #eee;
             padding-bottom: 10px;
         }
         
         /* Divider styling */
         .custom-divider {
             height: 2px;
-            background: linear-gradient(90deg, transparent, #0066cc, transparent);
+            background: linear-gradient(90deg, transparent, #FF9E00, transparent);
             margin: 30px 0;
             opacity: 0.7;
-        }
-        
-        /* Sidebar text color - MODIFIED */
-        [data-testid="stSidebar"] h2, 
-        [data-testid="stSidebar"] h3, 
-        [data-testid="stSidebar"] p {
-            color: #333333 !important;
-        }
-        
-        /* About section in sidebar - MODIFIED */
-        [data-testid="stSidebar"] div.sidebar-content {
-            background-color: rgba(240, 248, 255, 0.8) !important;
-            border-radius: 10px;
-            padding: 15px;
-            border: 1px solid #cccccc;
         }
     </style>
     """,
@@ -304,7 +302,7 @@ st.markdown("<h1 class='main-title'>🔍 Customer Churn Prediction</h1>", unsafe
 
 # Sidebar configuration
 with st.sidebar:
-    st.markdown("<h2 style='color: #004080; text-align: center;'>Prediction Options</h2>", unsafe_allow_html=True)
+    st.markdown("<h2 style='color: white; text-align: center;'>Prediction Options</h2>", unsafe_allow_html=True)
     
     model_type = st.radio(
         "Choose the type of Churn Prediction:",
@@ -315,13 +313,13 @@ with st.sidebar:
     st.markdown("<hr>", unsafe_allow_html=True)
     
     st.markdown("""
-    <div style='background-color: rgba(240, 248, 255, 0.8); padding: 15px; border-radius: 10px; margin-top: 20px; border: 1px solid #cccccc;'>
-        <h3 style='color: #004080; text-align: center;'>About</h3>
-        <p style='color: #333333; font-size: 0.9rem;'>
+    <div style='background-color: rgba(255,255,255,0.1); padding: 15px; border-radius: 10px; margin-top: 20px;'>
+        <h3 style='color: white; text-align: center;'>About</h3>
+        <p style='color: white; font-size: 0.9rem;'>
             This app uses machine learning models to predict customer churn in Bank and Telecom sectors.
             Enter customer details to predict whether they are likely to churn.
         </p>
-        <p style='color: #333333; font-size: 0.9rem; text-align: center; font-style: italic; margin-top: 15px;'>
+        <p style='color: white; font-size: 0.9rem; text-align: center; font-style: italic; margin-top: 15px;'>
             Developed by Fathima Shabna Ilmi
         </p>
     </div>
@@ -398,7 +396,7 @@ if model_type == "Bank Customer":
                     if result == "Churned":
                         st.error(f"⚠️ Prediction: This customer is likely to churn!")
                         st.markdown("""
-                        <div style='background-color: rgba(255, 235, 235, 0.9); padding: 15px; border-radius: 10px; border-left: 5px solid #ff5252; color: #333333;'>
+                        <div style='background-color: rgba(255, 220, 220, 0.3); padding: 15px; border-radius: 10px; border-left: 5px solid #ff5252;'>
                             <h4>Risk Factors:</h4>
                             <ul>
                                 <li>Consider reviewing their account benefits</li>
@@ -410,7 +408,7 @@ if model_type == "Bank Customer":
                     else:
                         st.success(f"✅ Prediction: This customer is likely to remain!")
                         st.markdown("""
-                        <div style='background-color: rgba(235, 255, 235, 0.9); padding: 15px; border-radius: 10px; border-left: 5px solid #4CAF50; color: #333333;'>
+                        <div style='background-color: rgba(220, 255, 220, 0.3); padding: 15px; border-radius: 10px; border-left: 5px solid #4CAF50;'>
                             <h4>Retention Strengths:</h4>
                             <ul>
                                 <li>Consider upselling additional products</li>
@@ -484,7 +482,7 @@ elif model_type == "Telecom Customer":
                     if result == "Churned":
                         st.error(f"⚠️ Prediction: This customer is likely to churn!")
                         st.markdown("""
-                        <div style='background-color: rgba(255, 235, 235, 0.9); padding: 15px; border-radius: 10px; border-left: 5px solid #ff5252; color: #333333;'>
+                        <div style='background-color: rgba(255, 220, 220, 0.3); padding: 15px; border-radius: 10px; border-left: 5px solid #ff5252;'>
                             <h4>Risk Factors:</h4>
                             <ul>
                                 <li>Review contract terms and offer upgrades</li>
@@ -496,7 +494,7 @@ elif model_type == "Telecom Customer":
                     else:
                         st.success(f"✅ Prediction: This customer is likely to remain!")
                         st.markdown("""
-                        <div style='background-color: rgba(235, 255, 235, 0.9); padding: 15px; border-radius: 10px; border-left: 5px solid #4CAF50; color: #333333;'>
+                        <div style='background-color: rgba(220, 255, 220, 0.3); padding: 15px; border-radius: 10px; border-left: 5px solid #4CAF50;'>
                             <h4>Retention Strengths:</h4>
                             <ul>
                                 <li>Consider offering loyalty rewards</li>
@@ -511,7 +509,7 @@ elif model_type == "Telecom Customer":
 # Video controls - Optional feature
 with st.sidebar:
     st.markdown("<hr>", unsafe_allow_html=True)
-    st.markdown("<h3 style='color: #004080; text-align: center;'>Video Controls</h3>", unsafe_allow_html=True)
+    st.markdown("<h3 style='color: white; text-align: center;'>Video Controls</h3>", unsafe_allow_html=True)
     
     video_opacity = st.slider("Background Opacity", 0.1, 1.0, 0.6, 0.1)
     
@@ -532,8 +530,8 @@ with st.sidebar:
 
 # Footer with animated gradient
 st.markdown("""
-<div style='text-align: center; margin-top: 40px; padding: 20px; background: linear-gradient(90deg, rgba(240, 248, 255, 0.8), rgba(230, 240, 250, 0.7), rgba(240, 248, 255, 0.8)); border-radius: 10px; animation: gradientBG 10s ease infinite; border: 1px solid #cccccc;'>
-    <p style='color: #333333; font-size: 0.9rem;'>
+<div style='text-align: center; margin-top: 40px; padding: 20px; background: linear-gradient(90deg, rgba(0,0,0,0.7), rgba(0,0,0,0.5), rgba(0,0,0,0.7)); border-radius: 10px; animation: gradientBG 10s ease infinite;'>
+    <p style='color: #ddd; font-size: 0.9rem;'>
         © 2025 Churn Prediction Tool | Built with Streamlit
     </p>
 </div>
