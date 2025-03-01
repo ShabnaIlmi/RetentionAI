@@ -623,6 +623,12 @@ elif model_type == "Telecom Customer":
         gender = st.selectbox("Gender", ["Male", "Female"])
         tenure = st.number_input("Tenure (Months)", min_value=0, max_value=100, help="How long the customer has been with the company")
         
+        st.markdown("<div class='radio-label-container'>", unsafe_allow_html=True)
+        senior_citizen = st.radio("Senior Citizen", [0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
+        partner = st.radio("Partner", [0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
+        dependent = st.radio("Dependent", [0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
+        st.markdown("</div>", unsafe_allow_html=True)
+
         st.markdown("</div>", unsafe_allow_html=True)
         
         # Billing Section
@@ -645,6 +651,18 @@ elif model_type == "Telecom Customer":
         
         contract = st.selectbox("Contract Type", ["Month-to-month", "One year", "Two year"], help="Contract length")
         internet_service = st.selectbox("Internet Service", ["Fiber optic", "DSL", "No"], help="Type of internet service")
+
+        # Add a container div around the radio label for consistent styling
+        st.markdown("<div class='radio-label-container'>", unsafe_allow_html=True)
+        phone_service = st.radio("Phone Service", [0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
+        multiple_lines = st.radio("Multiple Lines", [0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
+        online_security = st.radio("Online Security", [0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
+        online_backup = st.radio("Online Backup", [0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
+        device_protocol = st.radio("Device Protocol", [0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
+        tech_support = st.radio("Tech Support", [0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
+        streaming_tv = st.radio("Streaming TV", [0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
+        streaming_movie = st.radio("Streaming Movie", [0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
+        st.markdown("</div>", unsafe_allow_html=True)
         
         st.markdown("</div>", unsafe_allow_html=True)
         
