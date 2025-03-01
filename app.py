@@ -5,6 +5,8 @@ from PIL import Image
 import base64
 import os
 
+import streamlit.components.v1 as components
+
 # Load models and scalers
 bank_model = joblib.load("bank_churn_model.pkl")
 telecom_model = joblib.load("telecom_churn_model.pkl")
@@ -440,7 +442,7 @@ def reset_form():
     
     # Force rerun to display the default values
     st.rerun()
-    
+
 # App Title
 st.markdown("<h1 class='main-title'>🔍 Customer Churn Prediction</h1>", unsafe_allow_html=True)
 
@@ -598,12 +600,18 @@ if model_type == "Bank Customer":
                         </div>
                         """, unsafe_allow_html=True)
 
-    # Clear button outside the form
+    # Replace your clear button implementation with this:
     if st.session_state.get('form_submitted', False):
-        if st.button("🔄 Clear Form", key="bank_clear"):
-            reset_form()
-
-    st.markdown("</div>", unsafe_allow_html=True)
+        if st.button("🔄 Clear Form", key="clear_form_button"):
+            # Use JavaScript to reload the page
+            components.html(
+                """
+                <script>
+                    window.parent.location.reload();
+                </script>
+                """,
+                height=0
+            )
 
 elif model_type == "Telecom Customer":
     st.markdown("<div class='form-container'><h2 class='section-header'>📞 Telecom Customer Churn Prediction</h2>", unsafe_allow_html=True)
@@ -692,10 +700,18 @@ elif model_type == "Telecom Customer":
                         </div>
                         """, unsafe_allow_html=True)
 
-    # Clear button outside the form
+    # Replace your clear button implementation with this:
     if st.session_state.get('form_submitted', False):
-        if st.button("🔄 Clear Form", key="bank_clear"):
-            reset_form()
+        if st.button("🔄 Clear Form", key="clear_form_button"):
+            # Use JavaScript to reload the page
+            components.html(
+                """
+                <script>
+                    window.parent.location.reload();
+                </script>
+                """,
+                height=0
+            )
 
     st.markdown("</div>", unsafe_allow_html=True)
 
