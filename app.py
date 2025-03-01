@@ -398,6 +398,19 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
+# Initialize session state variables if not already present
+if 'form_submitted' not in st.session_state:
+    st.session_state.form_submitted = False
+
+# Function to reset form fields
+def reset_form():
+    for key in st.session_state.keys():
+        if key != 'model_type':  # Keep the model type selection
+            del st.session_state[key]
+    st.session_state.form_submitted = False
+    # Force the component to re-render
+    st.rerun()
+
 # App Title
 st.markdown("<h1 class='main-title'>🔍 Customer Churn Prediction</h1>", unsafe_allow_html=True)
 
@@ -430,9 +443,14 @@ with st.sidebar:
 
     st.markdown("<h2 style='color: white; text-align: center;'>Prediction Options</h2>", unsafe_allow_html=True)
 
+    # Store model_type in session_state
+    if 'model_type' not in st.session_state:
+        st.session_state.model_type = "Bank Customer"
+        
     model_type = st.radio(
         "Choose the type of Churn Prediction:",
         ["Bank Customer", "Telecom Customer"],
+        key='model_type',
         format_func=lambda x: f"📊 {x}"
     )
 
@@ -508,6 +526,7 @@ if model_type == "Bank Customer":
         submit_button = st.form_submit_button("📊 Predict Churn")
             
         if submit_button:
+            st.session_state.form_submitted = True
             if (credit_score == 0 or age == 0 or estimated_salary == 0 or points_earned == 0):
                 st.error("Please fill in all the fields correctly before submitting.")
             else:
@@ -520,6 +539,9 @@ if model_type == "Bank Customer":
                     card_type_encoded = [1 if card_type == "DIAMOND" else 0, 1 if card_type == "GOLD" else 0, 1 if card_type == "SILVER" else 0, 1 if card_type == "PLATINUM" else 0]
                     features = np.array([credit_score, age, tenure, balance, num_of_products, has_cr_card, is_active_member, estimated_salary, satisfaction_score, points_earned] + gender_encoded + card_type_encoded)
                     result = predict_churn(bank_model, bank_scaler, features)
+                    
+                    # Store prediction result in session state
+                    st.session_state.prediction_result = result
                     
                     if result == "Churned":
                         st.error(f"⚠️ Prediction: This customer is likely to churn!")
@@ -547,10 +569,9 @@ if model_type == "Bank Customer":
                         """, unsafe_allow_html=True)
 
     # Clear button outside the form
-    clear_button = st.button("🔄 Clear Form", key="bank_clear")
-    if clear_button:
-        st.session_state.clear()
-        st.experimental_rerun()
+    if st.session_state.get('form_submitted', False):
+        if st.button("🔄 Clear Form", key="bank_clear"):
+            reset_form()
 
     st.markdown("</div>", unsafe_allow_html=True)
 
@@ -596,6 +617,7 @@ elif model_type == "Telecom Customer":
         submit_button = st.form_submit_button("📊 Predict Churn")
 
         if submit_button:
+            st.session_state.form_submitted = True
             if (monthly_charges == 0 or total_charges == 0 or tenure == 0):
                 st.error("Please fill in all the fields correctly before submitting.")
             else:
@@ -610,6 +632,9 @@ elif model_type == "Telecom Customer":
                     gender_encoded = [1 if gender == "Male" else 0, 1 if gender == "Female" else 0]
                     features = np.array([paperless_billing, monthly_charges, total_charges, tenure] + contract_encoded + internet_service_encoded + payment_method_encoded + gender_encoded)
                     result = predict_churn(telecom_model, telecom_scaler, features)
+                    
+                    # Store prediction result in session state
+                    st.session_state.prediction_result = result
                     
                     if result == "Churned":
                         st.error(f"⚠️ Prediction: This customer is likely to churn!")
@@ -636,14 +661,12 @@ elif model_type == "Telecom Customer":
                         </div>
                         """, unsafe_allow_html=True)
 
-    # Clear button outside the form
-    clear_button = st.button("🔄 Clear Form", key="telecom_clear")
-    if clear_button:
-        st.session_state.clear()
-        st.experimental_rerun()
+   # Clear button outside the form
+    if st.session_state.get('form_submitted', False):
+        if st.button("🔄 Clear Form", key="bank_clear"):
+            reset_form()
 
     st.markdown("</div>", unsafe_allow_html=True)
-
 
 # Video controls - Optional feature
 with st.sidebar:
