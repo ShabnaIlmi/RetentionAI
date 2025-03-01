@@ -77,314 +77,220 @@ st.markdown(
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
-        /* Main title styling - ENHANCED */
+        /* Main title styling */
         .main-title {
             text-align: center;
-            font-size: 3.8rem;
+            color: #FF9E00;
+            font-size: 3.5rem;
             font-weight: 700;
-            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.9);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
             margin: 1.5rem 0;
-            background: linear-gradient(90deg, #00C9FF, #92FE9D);
+            background: linear-gradient(90deg, #FF5F6D, #FFC371);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            padding: 25px;
-            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.5);
             border-radius: 15px;
-            animation: shimmer 3s ease-in-out infinite alternate;
+            animation: glow 2s ease-in-out infinite alternate;
         }
         
-        @keyframes shimmer {
+        @keyframes glow {
             from {
-                text-shadow: 0 0 5px #fff, 0 0 10px #00C9FF, 0 0 15px #00C9FF;
+                text-shadow: 0 0 5px #fff, 0 0 10px #ff9e00, 0 0 15px #ff9e00;
             }
             to {
-                text-shadow: 0 0 10px #fff, 0 0 20px #92FE9D, 0 0 30px #92FE9D;
+                text-shadow: 0 0 10px #fff, 0 0 20px #ff9e00, 0 0 30px #ff9e00;
             }
         }
         
-        /* Form container styling - ENHANCED with new color scheme */
+        /* Form container styling - ENHANCED with higher opacity for better contrast against video */
         .form-container {
             background-color: rgba(255, 255, 255, 0.95);
             border-radius: 20px;
-            padding: 35px;
-            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.35);
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
             margin: 20px 0;
-            border-left: 6px solid #00C9FF;
+            border-left: 5px solid #FF9E00;
             transition: all 0.3s ease;
         }
         
         .form-container:hover {
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.45);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
             transform: translateY(-5px);
         }
         
-        /* Section headers - ENHANCED */
+        /* Section headers */
         .section-header {
-            color: #1E3A8A;
-            font-size: 2.2rem;
+            color: #FF9E00;
+            font-size: 2rem;
             font-weight: 600;
             margin-bottom: 25px;
-            border-bottom: 3px solid #00C9FF;
+            border-bottom: 2px solid #FF9E00;
             padding-bottom: 15px;
             text-align: center;
-            background: linear-gradient(90deg, #1E3A8A, #0284C7);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
         }
         
-        /* Input field styling - ENHANCED */
+        /* Input field styling */
         .stTextInput>div>div>input, 
         .stNumberInput>div>div>input {
-            border-radius: 12px;
-            padding: 14px 18px;
+            border-radius: 10px;
+            padding: 12px 15px;
             border: 2px solid #ddd;
             transition: all 0.3s ease;
-            box-shadow: inset 0 2px 5px rgba(0,0,0,0.1);
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
             margin-bottom: 12px;
             font-size: 16px;
             width: 100%;
-            background-color: #F8FAFC;
         }
         
         .stTextInput>div>div>input:focus, 
         .stNumberInput>div>div>input:focus {
-            border-color: #00C9FF;
-            box-shadow: 0 0 0 3px rgba(0, 201, 255, 0.2);
+            border-color: #FF9E00;
+            box-shadow: 0 0 0 3px rgba(255, 158, 0, 0.2);
             transform: translateY(-2px);
-            background-color: #FFFFFF;
         }
         
-        /* Label styling - ENHANCED */
+        /* Label styling */
         .stTextInput label, .stNumberInput label, .stSelectbox label, .css-16huue1 {
             font-weight: 600 !important;
             font-size: 17px !important;
-            color: #1E3A8A !important;
-            margin-bottom: 10px !important;
-            letter-spacing: 0.2px !important;
+            color: #333 !important;
+            margin-bottom: 8px !important;
         }
         
-        /* Input field container - ENHANCED */
+        /* Input field container */
         .input-container {
-            margin-bottom: 28px;
-            border-bottom: 1px dashed #E2E8F0;
-            padding-bottom: 18px;
+            margin-bottom: 25px;
+            border-bottom: 1px dashed #eee;
+            padding-bottom: 15px;
             transition: all 0.3s ease;
         }
         
         .input-container:hover {
-            border-bottom-color: #00C9FF;
-            background-color: rgba(0, 201, 255, 0.03);
-            border-radius: 8px;
-            padding: 5px;
+            border-bottom-color: #FF9E00;
         }
         
-        /* Select box styling - ENHANCED */
+        /* Select box styling */
         .stSelectbox>div>div {
-            border-radius: 12px !important;
-            border: 2px solid #E2E8F0 !important;
+            border-radius: 10px !important;
+            border: 2px solid #ddd !important;
             margin-bottom: 12px;
-            background-color: #F8FAFC;
         }
         
         .stSelectbox>div>div:focus-within {
-            border-color: #00C9FF !important;
-            box-shadow: 0 0 0 3px rgba(0, 201, 255, 0.2) !important;
-            background-color: #FFFFFF;
+            border-color: #FF9E00 !important;
+            box-shadow: 0 0 0 3px rgba(255, 158, 0, 0.2) !important;
         }
         
-        /* Radio button styling - ENHANCED */
+        /* Radio button styling */
         .stRadio>div {
-            background-color: rgba(255, 255, 255, 0.9);
-            padding: 18px;
-            border-radius: 12px;
-            box-shadow: 0 3px 8px rgba(0,0,0,0.1);
-            margin-bottom: 15px;
-            border: 1px solid #E2E8F0;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 12px;
+            border: 1px solid #eee;
         }
         
         .stRadio>div:hover {
-            border-color: #00C9FF;
-            background-color: rgba(0, 201, 255, 0.05);
+            border-color: #FF9E00;
         }
         
-        /* Slider styling - ENHANCED */
+        /* Slider styling */
         .stSlider>div>div>div>div {
-            background-color: #00C9FF !important;
+            background-color: #FF9E00 !important;
         }
         
-        /* Button styling - ENHANCED */
+        /* Button styling */
         .stButton>button {
-            background: linear-gradient(90deg, #00C9FF, #92FE9D);
-            color: #1E293B;
-            font-weight: 700;
-            border-radius: 12px;
-            padding: 15px 28px;
+            background: linear-gradient(90deg, #FF5F6D, #FFC371);
+            color: white;
+            font-weight: 600;
+            border-radius: 10px;
+            padding: 12px 24px;
             border: none;
-            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
             transition: all 0.3s ease;
             text-transform: uppercase;
-            letter-spacing: 1.2px;
+            letter-spacing: 1px;
             font-size: 16px;
             width: 100%;
-            margin-top: 18px;
+            margin-top: 15px;
         }
         
         .stButton>button:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-            background: linear-gradient(90deg, #00C9FF, #92FE9D);
-            color: #0F172A;
+            box-shadow: 0 7px 20px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(90deg, #FF5F6D, #FFC371);
         }
         
         .stButton>button:active {
             transform: translateY(1px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
         }
         
-        /* Success message styling - ENHANCED */
+        /* Success message styling */
         .element-container div[data-testid="stAlert"] {
-            background-color: rgba(255, 255, 255, 0.95);
-            border-radius: 12px;
-            padding: 22px;
-            margin: 22px 0;
-            animation: fadeIn 0.7s ease-in-out;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            animation: fadeIn 0.6s ease-in-out;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
         
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(25px); }
+            from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
         
         /* Sidebar styling - ENHANCED */
         [data-testid="stSidebar"] {
-            background: linear-gradient(180deg, rgba(15, 23, 42, 0.95), rgba(23, 37, 84, 0.9)) !important;
-            box-shadow: 3px 0 20px rgba(0, 0, 0, 0.4);
+            background: linear-gradient(180deg, rgba(20, 40, 80, 0.95), rgba(30, 60, 100, 0.9)) !important;
+            box-shadow: 2px 0 15px rgba(0, 0, 0, 0.3);
         }
         
         [data-testid="stSidebar"] .block-container {
-            padding: 2.8rem 1.7rem;
+            padding: 2.5rem 1.5rem;
         }
         
-        /* Sidebar title - NEW */
-        [data-testid="stSidebar"] h2 {
-            color: #E0F2FE !important;
-            font-size: 1.8rem !important;
-            margin-bottom: 25px !important;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3) !important;
-            letter-spacing: 0.5px !important;
-            border-bottom: 2px solid #00C9FF !important;
-            padding-bottom: 10px !important;
-        }
-        
-        /* Sidebar text - NEW */
-        [data-testid="stSidebar"] p {
-            color: #BAE6FD !important;
-            line-height: 1.7 !important;
-        }
-        
-        /* Input field tooltip icon - ENHANCED */
+        /* Input field tooltip icon */
         .stTooltipIcon {
-            color: #00C9FF !important;
-            font-size: 22px !important;
+            color: #FF9E00 !important;
+            font-size: 20px !important;
         }
         
-        /* Tooltip content styling - ENHANCED */
+        /* Tooltip content styling */
         .stMarkdown div[data-testid="stMarkdownContainer"] p {
             font-size: 15px !important;
-            line-height: 1.7 !important;
-            color: #1E293B !important;
+            line-height: 1.6 !important;
         }
         
-        /* Form group styling - ENHANCED */
+        /* Form group styling */
         .form-group {
-            background-color: rgba(255, 255, 255, 0.9);
-            border-radius: 14px;
-            padding: 25px;
-            margin-bottom: 25px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-            border-left: 5px solid #00C9FF;
-            border-top: 1px solid #E0F2FE;
-            border-right: 1px solid #E0F2FE;
-            border-bottom: 1px solid #E0F2FE;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+            border-left: 4px solid #FF9E00;
         }
         
-        .form-group:hover {
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
-            transform: translateY(-2px);
-            transition: all 0.3s ease;
-        }
-        
-        /* Form group title - ENHANCED */
         .form-group-title {
-            font-size: 20px;
+            font-size: 18px;
             font-weight: 600;
-            color: #0284C7;
-            margin-bottom: 18px;
-            border-bottom: 2px solid #E0F2FE;
-            padding-bottom: 12px;
-            text-align: left;
-            letter-spacing: 0.3px;
+            color: #FF9E00;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
         }
         
-        /* Divider styling - ENHANCED */
+        /* Divider styling */
         .custom-divider {
-            height: 3px;
-            background: linear-gradient(90deg, transparent, #00C9FF, #92FE9D, transparent);
-            margin: 35px 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #FF9E00, transparent);
+            margin: 30px 0;
             opacity: 0.7;
-            border-radius: 3px;
-        }
-        
-        /* Risk factors and retention strengths boxes - ENHANCED */
-        div[style*='background-color: rgba(255, 220, 220, 0.3)'] {
-            background-color: rgba(254, 226, 226, 0.7) !important;
-            border-radius: 12px !important;
-            border-left: 5px solid #EF4444 !important;
-            box-shadow: 0 5px 15px rgba(239, 68, 68, 0.15) !important;
-        }
-        
-        div[style*='background-color: rgba(220, 255, 220, 0.3)'] {
-            background-color: rgba(220, 252, 231, 0.7) !important;
-            border-radius: 12px !important;
-            border-left: 5px solid #10B981 !important;
-            box-shadow: 0 5px 15px rgba(16, 185, 129, 0.15) !important;
-        }
-        
-        /* Headers in result boxes - NEW */
-        div[style*='background-color: rgba(254, 226, 226, 0.7)'] h4,
-        div[style*='background-color: rgba(220, 252, 231, 0.7)'] h4 {
-            font-size: 18px !important;
-            font-weight: 600 !important;
-            margin-bottom: 12px !important;
-            color: #1E293B !important;
-        }
-        
-        /* List items in result boxes - NEW */
-        div[style*='background-color: rgba(254, 226, 226, 0.7)'] ul,
-        div[style*='background-color: rgba(220, 252, 231, 0.7)'] ul {
-            margin-left: 20px !important;
-        }
-        
-        div[style*='background-color: rgba(254, 226, 226, 0.7)'] li,
-        div[style*='background-color: rgba(220, 252, 231, 0.7)'] li {
-            margin-bottom: 8px !important;
-            color: #334155 !important;
-            font-size: 15px !important;
-        }
-        
-        /* Footer styling - ENHANCED */
-        div[style*='text-align: center; margin-top: 40px'] {
-            background: linear-gradient(90deg, rgba(15, 23, 42, 0.8), rgba(30, 58, 138, 0.7), rgba(15, 23, 42, 0.8)) !important;
-            padding: 25px !important;
-            border-radius: 15px !important;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2) !important;
-        }
-        
-        div[style*='text-align: center; margin-top: 40px'] p {
-            color: #E0F2FE !important;
-            font-size: 1rem !important;
-            letter-spacing: 0.5px !important;
         }
     </style>
     """,
@@ -407,13 +313,13 @@ with st.sidebar:
     st.markdown("<hr>", unsafe_allow_html=True)
     
     st.markdown("""
-    <div style='background-color: rgba(255,255,255,0.1); padding: 18px; border-radius: 12px; margin-top: 25px; border: 1px solid rgba(0, 201, 255, 0.3);'>
-        <h3 style='color: #BAE6FD; text-align: center; font-size: 1.5rem; margin-bottom: 15px;'>About</h3>
-        <p style='color: #BAE6FD; font-size: 0.95rem; line-height: 1.6;'>
+    <div style='background-color: rgba(255,255,255,0.1); padding: 15px; border-radius: 10px; margin-top: 20px;'>
+        <h3 style='color: white; text-align: center;'>About</h3>
+        <p style='color: white; font-size: 0.9rem;'>
             This app uses machine learning models to predict customer churn in Bank and Telecom sectors.
             Enter customer details to predict whether they are likely to churn.
         </p>
-        <p style='color: #BAE6FD; font-size: 0.95rem; text-align: center; font-style: italic; margin-top: 18px;'>
+        <p style='color: white; font-size: 0.9rem; text-align: center; font-style: italic; margin-top: 15px;'>
             Developed by Fathima Shabna Ilmi
         </p>
     </div>
@@ -490,7 +396,7 @@ if model_type == "Bank Customer":
                     if result == "Churned":
                         st.error(f"⚠️ Prediction: This customer is likely to churn!")
                         st.markdown("""
-                        <div style='background-color: rgba(255, 220, 220, 0.3); padding: 18px; border-radius: 12px; border-left: 5px solid #ff5252;'>
+                        <div style='background-color: rgba(255, 220, 220, 0.3); padding: 15px; border-radius: 10px; border-left: 5px solid #ff5252;'>
                             <h4>Risk Factors:</h4>
                             <ul>
                                 <li>Consider reviewing their account benefits</li>
@@ -502,7 +408,7 @@ if model_type == "Bank Customer":
                     else:
                         st.success(f"✅ Prediction: This customer is likely to remain!")
                         st.markdown("""
-                        <div style='background-color: rgba(220, 255, 220, 0.3); padding: 18px; border-radius: 12px; border-left: 5px solid #4CAF50;'>
+                        <div style='background-color: rgba(220, 255, 220, 0.3); padding: 15px; border-radius: 10px; border-left: 5px solid #4CAF50;'>
                             <h4>Retention Strengths:</h4>
                             <ul>
                                 <li>Consider upselling additional products</li>
@@ -576,7 +482,7 @@ elif model_type == "Telecom Customer":
                     if result == "Churned":
                         st.error(f"⚠️ Prediction: This customer is likely to churn!")
                         st.markdown("""
-                        <div style='background-color: rgba(255, 220, 220, 0.3); padding: 18px; border-radius: 12px; border-left: 5px solid #ff5252;'>
+                        <div style='background-color: rgba(255, 220, 220, 0.3); padding: 15px; border-radius: 10px; border-left: 5px solid #ff5252;'>
                             <h4>Risk Factors:</h4>
                             <ul>
                                 <li>Review contract terms and offer upgrades</li>
@@ -588,7 +494,7 @@ elif model_type == "Telecom Customer":
                     else:
                         st.success(f"✅ Prediction: This customer is likely to remain!")
                         st.markdown("""
-                        <div style='background-color: rgba(220, 255, 220, 0.3); padding: 18px; border-radius: 12px; border-left: 5px solid #4CAF50;'>
+                        <div style='background-color: rgba(220, 255, 220, 0.3); padding: 15px; border-radius: 10px; border-left: 5px solid #4CAF50;'>
                             <h4>Retention Strengths:</h4>
                             <ul>
                                 <li>Consider offering loyalty rewards</li>
@@ -603,7 +509,7 @@ elif model_type == "Telecom Customer":
 # Video controls - Optional feature
 with st.sidebar:
     st.markdown("<hr>", unsafe_allow_html=True)
-    st.markdown("<h3 style='color: #BAE6FD; text-align: center; margin-bottom: 15px;'>Video Controls</h3>", unsafe_allow_html=True)
+    st.markdown("<h3 style='color: white; text-align: center;'>Video Controls</h3>", unsafe_allow_html=True)
     
     video_opacity = st.slider("Background Opacity", 0.1, 1.0, 0.6, 0.1)
     
@@ -621,7 +527,6 @@ with st.sidebar:
         """,
         unsafe_allow_html=True
     )
-
 
 # Footer with animated gradient
 st.markdown("""
