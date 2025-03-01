@@ -403,45 +403,44 @@ if 'form_submitted' not in st.session_state:
     st.session_state.form_submitted = False
 
 def reset_form():
-    # Save the model_type to restore it after clearing
-    current_model_type = st.session_state.get('model_type', 'Bank Customer')
+    # Set default values for Bank Customer form
+    if st.session_state.model_type == "Bank Customer":
+        # Set default values for Bank Customer form fields
+        st.session_state.gender = "Male"
+        st.session_state.age = 18
+        st.session_state.credit_score = 300
+        st.session_state.tenure = 0
+        st.session_state.balance = 0.0
+        st.session_state.estimated_salary = 0.0
+        st.session_state.num_of_products = 1
+        st.session_state.has_cr_card = 0
+        st.session_state.card_type = "DIAMOND"
+        st.session_state.is_active_member = 0
+        st.session_state.satisfaction_score = 1
+        st.session_state.points_earned = 0
     
-    # List of all form fields for bank model
-    bank_fields = [
-        'gender', 'age', 'credit_score', 'tenure', 'balance', 
-        'estimated_salary', 'num_of_products', 'has_cr_card', 
-        'card_type', 'is_active_member', 'satisfaction_score', 
-        'points_earned'
-    ]
-    
-    # List of all form fields for telecom model
-    telecom_fields = [
-        'gender', 'tenure', 'monthly_charges', 'total_charges',
-        'paperless_billing', 'payment_method', 'contract', 
-        'internet_service'
-    ]
-    
-    # Combine all fields
-    all_fields = list(set(bank_fields + telecom_fields))
-    
-    # Clear all form fields except model_type
-    for field in all_fields:
-        if field in st.session_state:
-            del st.session_state[field]
+    # Set default values for Telecom Customer form
+    elif st.session_state.model_type == "Telecom Customer":
+        # Set default values for Telecom Customer form fields
+        st.session_state.gender = "Male"
+        st.session_state.tenure = 0
+        st.session_state.monthly_charges = 0.0
+        st.session_state.total_charges = 0.0
+        st.session_state.paperless_billing = 0
+        st.session_state.payment_method = "Electronic check"
+        st.session_state.contract = "Month-to-month"
+        st.session_state.internet_service = "Fiber optic"
     
     # Reset form_submitted flag
     st.session_state.form_submitted = False
     
-    # Clear prediction result if it exists
+    # Clear prediction result
     if 'prediction_result' in st.session_state:
         del st.session_state['prediction_result']
     
-    # Retain the model type
-    st.session_state.model_type = current_model_type
-    
-    # Force rerun to show cleared form
+    # Force rerun to display the default values
     st.rerun()
-
+    
 # App Title
 st.markdown("<h1 class='main-title'>🔍 Customer Churn Prediction</h1>", unsafe_allow_html=True)
 
