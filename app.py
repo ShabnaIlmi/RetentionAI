@@ -321,7 +321,7 @@ st.markdown(
         .form-group-title {
             font-size: 18px;
             font-weight: 600;
-            color: #FF9E00;
+            color: #000000;
             margin-bottom: 15px;
             border-bottom: 1px solid #eee;
             padding-bottom: 10px;
