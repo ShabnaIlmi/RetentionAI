@@ -383,7 +383,7 @@ with st.sidebar:
     st.markdown("<h2 style='color: white; text-align: center;'>Prediction Options</h2>", unsafe_allow_html=True)
     
     model_type = st.radio(
-        "Choose the type of Churn Prediction:",
+        st.markdown("<h2 style='color: white; text-align: center;'>Choose the type of Churn Prediction</h2>", unsafe_allow_html=True)
         ["Bank Customer", "Telecom Customer"],
         format_func=lambda x: f"📊 {x}"
     )
