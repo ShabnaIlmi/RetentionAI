@@ -696,7 +696,7 @@ elif model_type == "Telecom Customer":
                         paperless_billing, monthly_charges, total_charges, tenure, 
                         senior_citizen, partner, dependent, phone_service, 
                         multiple_lines, online_security, online_backup, 
-                        device_protocol, tech_support, streaming_tv, streaming_movie
+                        device_protection, tech_support, streaming_tv, streaming_movie
                     ] + contract_encoded + internet_service_encoded + payment_method_encoded + gender_encoded)
                     
                     # Make sure telecom_model, telecom_scaler, and predict_churn are defined
