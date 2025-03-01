@@ -504,18 +504,9 @@ if model_type == "Bank Customer":
         # Divider
         st.markdown("<div class='custom-divider'></div>", unsafe_allow_html=True)
         
-        # Buttons
-        col1, col2 = st.columns(2)
-        with col1:
-            submit_button = st.form_submit_button("📊 Predict Churn")
-        # Add this outside the form
-        with col2:
-            clear_button = st.button("🔄 Clear Form")
+        # Submit button inside form
+        submit_button = st.form_submit_button("📊 Predict Churn")
             
-        if clear_button:
-            st.session_state.clear()
-            st.experimental_rerun()
-
         if submit_button:
             if (credit_score == 0 or age == 0 or estimated_salary == 0 or points_earned == 0):
                 st.error("Please fill in all the fields correctly before submitting.")
@@ -554,6 +545,12 @@ if model_type == "Bank Customer":
                             </ul>
                         </div>
                         """, unsafe_allow_html=True)
+
+    # Clear button outside the form
+    clear_button = st.button("🔄 Clear Form", key="bank_clear")
+    if clear_button:
+        st.session_state.clear()
+        st.experimental_rerun()
 
     st.markdown("</div>", unsafe_allow_html=True)
 
@@ -595,17 +592,8 @@ elif model_type == "Telecom Customer":
         # Divider
         st.markdown("<div class='custom-divider'></div>", unsafe_allow_html=True)
         
-        # Buttons
-        col1, col2 = st.columns(2)
-        with col1:
-            submit_button = st.form_submit_button("📊 Predict Churn")
-        # Add this outside the form
-        with col2:
-            clear_button = st.button("🔄 Clear Form")
-            
-        if clear_button:
-            st.session_state.clear()
-            st.experimental_rerun()
+        # Submit button inside form
+        submit_button = st.form_submit_button("📊 Predict Churn")
 
         if submit_button:
             if (monthly_charges == 0 or total_charges == 0 or tenure == 0):
@@ -647,6 +635,12 @@ elif model_type == "Telecom Customer":
                             </ul>
                         </div>
                         """, unsafe_allow_html=True)
+
+    # Clear button outside the form
+    clear_button = st.button("🔄 Clear Form", key="telecom_clear")
+    if clear_button:
+        st.session_state.clear()
+        st.experimental_rerun()
 
     st.markdown("</div>", unsafe_allow_html=True)
 
