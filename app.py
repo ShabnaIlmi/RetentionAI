@@ -508,10 +508,12 @@ if model_type == "Bank Customer":
         col1, col2 = st.columns(2)
         with col1:
             submit_button = st.form_submit_button("📊 Predict Churn")
+        # Add this outside the form
         with col2:
-            clear_button = st.form_submit_button("🔄 Clear Form")
-
+            clear_button = st.button("🔄 Clear Form")
+            
         if clear_button:
+            st.session_state.clear()
             st.experimental_rerun()
 
         if submit_button:
@@ -597,10 +599,12 @@ elif model_type == "Telecom Customer":
         col1, col2 = st.columns(2)
         with col1:
             submit_button = st.form_submit_button("📊 Predict Churn")
+        # Add this outside the form
         with col2:
-            clear_button = st.form_submit_button("🔄 Clear Form")
-
+            clear_button = st.button("🔄 Clear Form")
+            
         if clear_button:
+            st.session_state.clear()
             st.experimental_rerun()
 
         if submit_button:
@@ -645,6 +649,7 @@ elif model_type == "Telecom Customer":
                         """, unsafe_allow_html=True)
 
     st.markdown("</div>", unsafe_allow_html=True)
+
 
 # Video controls - Optional feature
 with st.sidebar:
