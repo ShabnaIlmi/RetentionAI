@@ -410,17 +410,13 @@ def reset_form():
     # List of keys to keep (don't reset)
     keys_to_keep = ['model_type']
     
-    # Get all keys in session state
-    all_keys = list(st.session_state.keys())
+    # Create a list of keys to remove (all except those in keys_to_keep)
+    keys_to_remove = [key for key in st.session_state.keys() if key not in keys_to_keep]
     
-    # Remove keys that are not in the keep list
-    for key in all_keys:
-        if key not in keys_to_keep:
-            if key in st.session_state:
-                del st.session_state[key]
-    
-    # Restore model_type
-    st.session_state.model_type = current_model_type
+    # Remove only the keys that should be removed
+    for key in keys_to_remove:
+        if key in st.session_state:
+            del st.session_state[key]
     
     # Reset form_submitted flag
     st.session_state.form_submitted = False
