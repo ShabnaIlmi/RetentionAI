@@ -61,494 +61,236 @@ except Exception as e:
         """
         <style>
         .stApp {
-            background: linear-gradient(135deg, #121638, #2E3192);
+            background: linear-gradient(135deg, #1c3b5a, #0a192f);
         }
         </style>
         """,
         unsafe_allow_html=True
     )
 
-# Custom CSS for advanced form styling with enhanced colors
+# Custom CSS for advanced form styling
 st.markdown(
     """
     <style>
-        /* Main app styling with modern color palette */
+        /* Main app styling */
         .stApp {
-            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
-        /* Enhanced Main title styling with vibrant gradient */
+        /* Main title styling */
         .main-title {
             text-align: center;
-            font-size: 3.8rem;
-            font-weight: 800;
+            color: #FF9E00;
+            font-size: 3.5rem;
+            font-weight: 700;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
-            margin: 2rem 0;
-            background: linear-gradient(90deg, #6A11CB, #2575FC, #49C6E5);
+            margin: 1.5rem 0;
+            background: linear-gradient(90deg, #FF5F6D, #FFC371);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            padding: 25px;
+            padding: 20px;
             background-color: rgba(0, 0, 0, 0.5);
-            border-radius: 18px;
-            animation: glow 3s ease-in-out infinite alternate;
-            letter-spacing: 1px;
+            border-radius: 15px;
+            animation: glow 2s ease-in-out infinite alternate;
         }
         
         @keyframes glow {
             from {
-                text-shadow: 0 0 5px #fff, 0 0 10px #6A11CB, 0 0 15px #2575FC;
+                text-shadow: 0 0 5px #fff, 0 0 10px #ff9e00, 0 0 15px #ff9e00;
             }
             to {
-                text-shadow: 0 0 10px #fff, 0 0 20px #2575FC, 0 0 30px #49C6E5;
+                text-shadow: 0 0 10px #fff, 0 0 20px #ff9e00, 0 0 30px #ff9e00;
             }
         }
         
-        /* Form container styling with modern glassmorphism effect */
+        /* Form container styling - ENHANCED with higher opacity for better contrast against video */
         .form-container {
-            background-color: rgba(255, 255, 255, 0.92);
-            border-radius: 24px;
-            padding: 35px;
-            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.35);
-            margin: 25px 0;
-            border-left: 6px solid #6A11CB;
-            border-top: 1px solid rgba(255, 255, 255, 0.4);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.4);
-            backdrop-filter: blur(10px);
-            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            margin: 20px 0;
+            border-left: 5px solid #FF9E00;
+            transition: all 0.3s ease;
         }
         
         .form-container:hover {
-            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.5);
-            transform: translateY(-7px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+            transform: translateY(-5px);
         }
         
-        /* Section headers with improved gradient */
+        /* Section headers */
         .section-header {
-            color: #2575FC;
-            font-size: 2.2rem;
-            font-weight: 700;
-            margin-bottom: 30px;
-            border-bottom: 3px solid transparent;
-            border-image: linear-gradient(to right, #6A11CB, #2575FC, #49C6E5);
-            border-image-slice: 1;
+            color: #FF9E00;
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 25px;
+            border-bottom: 2px solid #FF9E00;
             padding-bottom: 15px;
             text-align: center;
-            letter-spacing: 0.5px;
         }
         
-        /* Input field styling with enhanced focus state */
+        /* Input field styling */
         .stTextInput>div>div>input, 
         .stNumberInput>div>div>input {
-            border-radius: 12px;
-            padding: 14px 18px;
-            border: 2px solid #E6E6FA;
-            transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
-            box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
-            margin-bottom: 15px;
+            border-radius: 10px;
+            padding: 12px 15px;
+            border: 2px solid #ddd;
+            transition: all 0.3s ease;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 12px;
             font-size: 16px;
             width: 100%;
-            background-color: rgba(255, 255, 255, 0.9);
         }
         
         .stTextInput>div>div>input:focus, 
         .stNumberInput>div>div>input:focus {
-            border-color: #6A11CB;
-            box-shadow: 0 0 0 4px rgba(106, 17, 203, 0.2);
-            transform: translateY(-3px);
-            background-color: #ffffff;
+            border-color: #FF9E00;
+            box-shadow: 0 0 0 3px rgba(255, 158, 0, 0.2);
+            transform: translateY(-2px);
         }
         
-        /* Label styling with modern color */
+        /* Label styling */
         .stTextInput label, .stNumberInput label, .stSelectbox label, .css-16huue1 {
             font-weight: 600 !important;
             font-size: 17px !important;
-            color: #121638 !important;
-            margin-bottom: 10px !important;
-            letter-spacing: 0.3px !important;
+            color: #333 !important;
+            margin-bottom: 8px !important;
         }
         
-        /* Input field container with animated border */
+        /* Input field container */
         .input-container {
-            margin-bottom: 28px;
-            border-bottom: 1px dashed #E6E6FA;
-            padding-bottom: 18px;
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .input-container:hover {
-            border-bottom-color: #6A11CB;
-        }
-        
-        .input-container:hover::after {
-            content: "";
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: linear-gradient(90deg, #6A11CB, #2575FC, #49C6E5);
-            animation: slideIn 0.5s forwards;
-        }
-        
-        @keyframes slideIn {
-            from { transform: translateX(-100%); }
-            to { transform: translateX(0); }
-        }
-        
-        /* Select box styling with improved focus state */
-        .stSelectbox>div>div {
-            border-radius: 12px !important;
-            border: 2px solid #E6E6FA !important;
-            margin-bottom: 15px;
-            background-color: rgba(255, 255, 255, 0.9) !important;
-            transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
-        }
-        
-        .stSelectbox>div>div:focus-within {
-            border-color: #6A11CB !important;
-            box-shadow: 0 0 0 4px rgba(106, 17, 203, 0.2) !important;
-            transform: translateY(-3px);
-            background-color: #ffffff !important;
-        }
-        
-        /* Radio button styling with updated colors */
-        .stRadio>div {
-            background-color: rgba(255, 255, 255, 0.85);
-            padding: 18px;
-            border-radius: 16px;
-            box-shadow: 0 3px 8px rgba(0,0,0,0.08);
-            margin-bottom: 15px;
-            border: 1px solid rgba(230, 230, 250, 0.8);
+            margin-bottom: 25px;
+            border-bottom: 1px dashed #eee;
+            padding-bottom: 15px;
             transition: all 0.3s ease;
         }
         
+        .input-container:hover {
+            border-bottom-color: #FF9E00;
+        }
+        
+        /* Select box styling */
+        .stSelectbox>div>div {
+            border-radius: 10px !important;
+            border: 2px solid #ddd !important;
+            margin-bottom: 12px;
+        }
+        
+        .stSelectbox>div>div:focus-within {
+            border-color: #FF9E00 !important;
+            box-shadow: 0 0 0 3px rgba(255, 158, 0, 0.2) !important;
+        }
+        
+        /* Radio button styling */
+        .stRadio>div {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 12px;
+            border: 1px solid #eee;
+        }
+        
         .stRadio>div:hover {
-            border-color: #6A11CB;
-            background-color: rgba(255, 255, 255, 0.95);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 12px rgba(0,0,0,0.12);
+            border-color: #FF9E00;
         }
         
-        /* Slider styling with updated colors */
+        /* Slider styling */
         .stSlider>div>div>div>div {
-            background-color: #2575FC !important;
+            background-color: #FF9E00 !important;
         }
         
-        .stSlider>div>div>div {
-            background: linear-gradient(to right, rgba(106, 17, 203, 0.1), rgba(37, 117, 252, 0.2)) !important;
-        }
-        
-        /* Button styling with dynamic gradient */
+        /* Button styling */
         .stButton>button {
-            background: linear-gradient(45deg, #6A11CB, #2575FC, #49C6E5);
+            background: linear-gradient(90deg, #FF5F6D, #FFC371);
             color: white;
             font-weight: 600;
-            border-radius: 12px;
-            padding: 14px 28px;
+            border-radius: 10px;
+            padding: 12px 24px;
             border: none;
-            box-shadow: 0 5px 18px rgba(0, 0, 0, 0.2);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
+            letter-spacing: 1px;
             font-size: 16px;
             width: 100%;
-            margin-top: 20px;
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-        }
-        
-        .stButton>button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, #49C6E5, #2575FC, #6A11CB);
-            transition: all 0.6s ease;
-            z-index: -1;
+            margin-top: 15px;
         }
         
         .stButton>button:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-            letter-spacing: 2px;
-        }
-        
-        .stButton>button:hover::before {
-            left: 0;
+            transform: translateY(-3px);
+            box-shadow: 0 7px 20px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(90deg, #FF5F6D, #FFC371);
         }
         
         .stButton>button:active {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transform: translateY(1px);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
         }
         
-        /* Success message styling with enhanced effects */
+        /* Success message styling */
         .element-container div[data-testid="stAlert"] {
-            background-color: rgba(255, 255, 255, 0.92);
-            border-radius: 16px;
-            padding: 25px;
-            margin: 25px 0;
-            animation: fadeInUp 0.7s ease-in-out;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-            border-left: 6px solid #2575FC;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            animation: fadeIn 0.6s ease-in-out;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
         
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
         
-        /* Sidebar styling with improved gradient */
+        /* Sidebar styling - ENHANCED */
         [data-testid="stSidebar"] {
-            background: linear-gradient(180deg, rgba(18, 22, 56, 0.97), rgba(106, 17, 203, 0.92)) !important;
-            box-shadow: 3px 0 20px rgba(0, 0, 0, 0.35);
+            background: linear-gradient(180deg, rgba(20, 40, 80, 0.95), rgba(30, 60, 100, 0.9)) !important;
+            box-shadow: 2px 0 15px rgba(0, 0, 0, 0.3);
         }
         
         [data-testid="stSidebar"] .block-container {
-            padding: 3rem 1.8rem;
-        }
-        
-        [data-testid="stSidebar"] [data-testid="stMarkdown"] h2 {
-            font-weight: 700 !important;
-            letter-spacing: 1px !important;
-            margin-bottom: 25px !important;
-            background: linear-gradient(90deg, #ffffff, #E6E6FA);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-size: 26px !important;
+            padding: 2.5rem 1.5rem;
         }
         
         /* Input field tooltip icon */
         .stTooltipIcon {
-            color: #2575FC !important;
-            font-size: 22px !important;
-            transition: all 0.3s ease;
+            color: #FF9E00 !important;
+            font-size: 20px !important;
         }
         
-        .stTooltipIcon:hover {
-            color: #6A11CB !important;
-            transform: scale(1.2);
+        /* Tooltip content styling */
+        .stMarkdown div[data-testid="stMarkdownContainer"] p {
+            font-size: 15px !important;
+            line-height: 1.6 !important;
         }
         
-        /* Form group styling with enhanced effects */
+        /* Form group styling */
         .form-group {
-            background-color: rgba(255, 255, 255, 0.85);
-            border-radius: 16px;
-            padding: 25px;
-            margin-bottom: 28px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-            border-left: 5px solid #6A11CB;
-            border-top: 1px solid rgba(255, 255, 255, 0.6);
-            border-right: 1px solid rgba(255, 255, 255, 0.6);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.6);
-            position: relative;
-            overflow: hidden;
-            transition: all 0.4s ease;
-        }
-        
-        .form-group:hover {
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
-            transform: translateY(-4px);
-            background-color: rgba(255, 255, 255, 0.92);
-        }
-        
-        .form-group::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, #6A11CB, #2575FC, #49C6E5);
-            opacity: 0.8;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+            border-left: 4px solid #FF9E00;
         }
         
         .form-group-title {
-            font-size: 20px;
-            font-weight: 700;
-            color: #121638;
-            margin-bottom: 18px;
-            border-bottom: 1px solid #E6E6FA;
-            padding-bottom: 12px;
-            text-align: left;
-            letter-spacing: 0.5px;
+            font-size: 18px;
+            font-weight: 600;
+            color: #FF9E00;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
         }
         
-        /* Enhanced divider styling */
+        /* Divider styling */
         .custom-divider {
-            height: 3px;
-            background: linear-gradient(90deg, transparent, #6A11CB, #2575FC, #49C6E5, transparent);
-            margin: 35px 0;
-            opacity: 0.8;
-            border-radius: 3px;
-        }
-        
-        /* Risk and Success messages with enhanced styling */
-        .risk-factors {
-            background: linear-gradient(to right, rgba(255, 0, 0, 0.03), rgba(255, 100, 100, 0.07));
-            padding: 20px;
-            border-radius: 14px;
-            border-left: 6px solid #FF5252;
-            box-shadow: 0 4px 12px rgba(255, 82, 82, 0.1);
-            margin-top: 20px;
-            transition: all 0.3s ease;
-        }
-        
-        .risk-factors:hover {
-            box-shadow: 0 6px 18px rgba(255, 82, 82, 0.15);
-            transform: translateY(-3px);
-        }
-        
-        .retention-strengths {
-            background: linear-gradient(to right, rgba(76, 175, 80, 0.03), rgba(76, 175, 80, 0.07));
-            padding: 20px;
-            border-radius: 14px;
-            border-left: 6px solid #4CAF50;
-            box-shadow: 0 4px 12px rgba(76, 175, 80, 0.1);
-            margin-top: 20px;
-            transition: all 0.3s ease;
-        }
-        
-        .retention-strengths:hover {
-            box-shadow: 0 6px 18px rgba(76, 175, 80, 0.15);
-            transform: translateY(-3px);
-        }
-        
-        /* Enhanced footer styling */
-        .footer {
-            text-align: center;
-            margin-top: 50px;
-            padding: 30px;
-            background: linear-gradient(90deg, rgba(18, 22, 56, 0.8), rgba(106, 17, 203, 0.6), rgba(73, 198, 229, 0.8));
-            background-size: 200% auto;
-            border-radius: 16px;
-            animation: gradientBG 15s ease infinite;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-        }
-        
-        .footer p {
-            color: white;
-            font-weight: 500;
-            letter-spacing: 0.5px;
-            margin: 0;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-        }
-        
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        
-        /* Checkbox styling */
-        .stCheckbox > div {
-            padding: 15px;
-            background-color: rgba(255, 255, 255, 0.8);
-            border-radius: 12px;
-            border: 1px solid #E6E6FA;
-            transition: all 0.3s ease;
-        }
-        
-        .stCheckbox > div:hover {
-            background-color: rgba(255, 255, 255, 0.95);
-            border-color: #2575FC;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-        }
-        
-        /* Notification and announcement styles */
-        .notification {
-            background: linear-gradient(to right, rgba(255, 158, 0, 0.05), rgba(255, 193, 7, 0.1));
-            border-left: 5px solid #FFC107;
-            padding: 18px;
-            border-radius: 12px;
-            margin: 20px 0;
-            position: relative;
-            box-shadow: 0 4px 15px rgba(255, 193, 7, 0.1);
-            animation: pulse 2s infinite;
-        }
-        
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(255, 193, 7, 0.4); }
-            70% { box-shadow: 0 0 0 10px rgba(255, 193, 7, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(255, 193, 7, 0); }
-        }
-        
-        /* Metrics and stats containers */
-        .metrics-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            margin: 25px 0;
-        }
-        
-        .metric-card {
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 16px;
-            padding: 20px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-            flex: 1 1 200px;
-            text-align: center;
-            transition: all 0.3s ease;
-            border-bottom: 3px solid #2575FC;
-        }
-        
-        .metric-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
-            border-bottom-color: #6A11CB;
-        }
-        
-        .metric-value {
-            font-size: 28px;
-            font-weight: 700;
-            color: #121638;
-            margin: 10px 0;
-        }
-        
-        .metric-label {
-            font-size: 14px;
-            color: #666;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-        }
-        
-        /* Progress bar styling */
-        .progress-container {
-            width: 100%;
-            height: 12px;
-            background-color: rgba(230, 230, 250, 0.5);
-            border-radius: 10px;
-            margin: 15px 0;
-            overflow: hidden;
-            position: relative;
-        }
-        
-        .progress-bar {
-            height: 100%;
-            background: linear-gradient(to right, #6A11CB, #2575FC);
-            border-radius: 10px;
-            transition: width 0.5s ease-in-out;
-        }
-        
-        /* Enhanced expander styling */
-        .streamlit-expanderHeader {
-            font-weight: 600 !important;
-            color: #121638 !important;
-            background-color: rgba(230, 230, 250, 0.3) !important;
-            border-radius: 8px !important;
-            padding: 10px 15px !important;
-            transition: all 0.3s ease !important;
-        }
-        
-        .streamlit-expanderHeader:hover {
-            background-color: rgba(106, 17, 203, 0.1) !important;
-            color: #6A11CB !important;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #FF9E00, transparent);
+            margin: 30px 0;
+            opacity: 0.7;
         }
     </style>
     """,
@@ -571,14 +313,233 @@ with st.sidebar:
     st.markdown("<hr>", unsafe_allow_html=True)
     
     st.markdown("""
-    <div style='background-color: rgba(255,255,255,0.1); padding: 20px; border-radius: 14px; margin-top: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);'>
-        <h3 style='color: white; text-align: center; font-weight: 600; margin-bottom: 15px;'>About</h3>
-        <p style='color: white; font-size: 0.95rem; line-height: 1.6;'>
+    <div style='background-color: rgba(255,255,255,0.1); padding: 15px; border-radius: 10px; margin-top: 20px;'>
+        <h3 style='color: white; text-align: center;'>About</h3>
+        <p style='color: white; font-size: 0.9rem;'>
             This app uses machine learning models to predict customer churn in Bank and Telecom sectors.
             Enter customer details to predict whether they are likely to churn.
         </p>
-        <p style='color: white; font-size: 0.95rem; text-align: center; font-style: italic; margin-top: 15px; opacity: 0.9;'>
-            Built with ❤️ using Streamlit and ML
+        <p style='color: white; font-size: 0.9rem; text-align: center; font-style: italic; margin-top: 15px;'>
+            Developed by Fathima Shabna Ilmi
         </p>
     </div>
     """, unsafe_allow_html=True)
+
+# Main content
+if model_type == "Bank Customer":
+    st.markdown("<div class='form-container'><h2 class='section-header'>🏦 Bank Customer Churn Prediction</h2>", unsafe_allow_html=True)
+    
+    with st.form(key="bank_form"):
+        # Basic Customer Information Section
+        st.markdown("<div class='form-group'><h3 class='form-group-title'>📋 Customer Profile</h3>", unsafe_allow_html=True)
+        
+        gender = st.selectbox("Gender", ["Male", "Female"])
+        age = st.number_input("Age", min_value=18, max_value=100, help="Customer's age")
+        credit_score = st.number_input("Credit Score", min_value=300, max_value=900, step=1, help="Customer's credit score (300-900)")
+        
+        st.markdown("</div>", unsafe_allow_html=True)
+        
+        # Account Information Section
+        st.markdown("<div class='form-group'><h3 class='form-group-title'>💰 Account Information</h3>", unsafe_allow_html=True)
+        
+        tenure = st.number_input("Tenure (Years)", min_value=0, max_value=10, help="Years as a customer")
+        balance = st.number_input("Balance", help="Current account balance")
+        estimated_salary = st.number_input("Estimated Salary", help="Customer's estimated annual salary")
+        
+        st.markdown("</div>", unsafe_allow_html=True)
+        
+        # Product Usage Section
+        st.markdown("<div class='form-group'><h3 class='form-group-title'>🛒 Product Usage</h3>", unsafe_allow_html=True)
+        
+        num_of_products = st.number_input("Number of Products", min_value=1, max_value=4, help="Number of bank products used")
+        has_cr_card = st.radio("Has Credit Card?", [0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
+        card_type = st.selectbox("Card Type", ["DIAMOND", "GOLD", "SILVER", "PLATINUM"])
+        
+        st.markdown("</div>", unsafe_allow_html=True)
+        
+        # Engagement Metrics Section
+        st.markdown("<div class='form-group'><h3 class='form-group-title'>📊 Engagement Metrics</h3>", unsafe_allow_html=True)
+        
+        is_active_member = st.radio("Is Active Member?", [0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
+        satisfaction_score = st.slider("Satisfaction Score", 1, 5, help="Customer satisfaction rating (1-5)")
+        points_earned = st.number_input("Points Earned", min_value=0, help="Reward points earned")
+        
+        st.markdown("</div>", unsafe_allow_html=True)
+        
+        # Divider
+        st.markdown("<div class='custom-divider'></div>", unsafe_allow_html=True)
+        
+        # Buttons
+        col1, col2 = st.columns(2)
+        with col1:
+            submit_button = st.form_submit_button("📊 Predict Churn")
+        with col2:
+            clear_button = st.form_submit_button("🔄 Clear Form")
+
+        if clear_button:
+            st.experimental_rerun()
+
+        if submit_button:
+            if (credit_score == 0 or age == 0 or balance == 0 or estimated_salary == 0 or points_earned == 0):
+                st.error("Please fill in all the fields correctly before submitting.")
+            else:
+                with st.spinner("Analyzing customer data..."):
+                    # Add a slight delay for effect
+                    import time
+                    time.sleep(1)
+                    
+                    gender_encoded = [1 if gender == "Male" else 0, 1 if gender == "Female" else 0]
+                    card_type_encoded = [1 if card_type == "DIAMOND" else 0, 1 if card_type == "GOLD" else 0, 1 if card_type == "SILVER" else 0, 1 if card_type == "PLATINUM" else 0]
+                    features = np.array([credit_score, age, tenure, balance, num_of_products, has_cr_card, is_active_member, estimated_salary, satisfaction_score, points_earned] + gender_encoded + card_type_encoded)
+                    result = predict_churn(bank_model, bank_scaler, features)
+                    
+                    if result == "Churned":
+                        st.error(f"⚠️ Prediction: This customer is likely to churn!")
+                        st.markdown("""
+                        <div style='background-color: rgba(255, 220, 220, 0.3); padding: 15px; border-radius: 10px; border-left: 5px solid #ff5252;'>
+                            <h4>Risk Factors:</h4>
+                            <ul>
+                                <li>Consider reviewing their account benefits</li>
+                                <li>Reach out to improve satisfaction</li>
+                                <li>Offer personalized retention incentives</li>
+                            </ul>
+                        </div>
+                        """, unsafe_allow_html=True)
+                    else:
+                        st.success(f"✅ Prediction: This customer is likely to remain!")
+                        st.markdown("""
+                        <div style='background-color: rgba(220, 255, 220, 0.3); padding: 15px; border-radius: 10px; border-left: 5px solid #4CAF50;'>
+                            <h4>Retention Strengths:</h4>
+                            <ul>
+                                <li>Consider upselling additional products</li>
+                                <li>Encourage referrals from this loyal customer</li>
+                                <li>Monitor for any changes in engagement patterns</li>
+                            </ul>
+                        </div>
+                        """, unsafe_allow_html=True)
+
+    st.markdown("</div>", unsafe_allow_html=True)
+
+elif model_type == "Telecom Customer":
+    st.markdown("<div class='form-container'><h2 class='section-header'>📞 Telecom Customer Churn Prediction</h2>", unsafe_allow_html=True)
+    
+    with st.form(key="telecom_form"):
+        # Customer Profile Section
+        st.markdown("<div class='form-group'><h3 class='form-group-title'>👤 Customer Demographics</h3>", unsafe_allow_html=True)
+        
+        gender = st.selectbox("Gender", ["Male", "Female"])
+        tenure = st.number_input("Tenure (Months)", min_value=0, max_value=100, help="How long the customer has been with the company")
+        
+        st.markdown("</div>", unsafe_allow_html=True)
+        
+        # Billing Section
+        st.markdown("<div class='form-group'><h3 class='form-group-title'>💵 Billing Information</h3>", unsafe_allow_html=True)
+        
+        monthly_charges = st.number_input("Monthly Charges", min_value=0.0, help="Monthly bill amount")
+        total_charges = st.number_input("Total Charges", min_value=0.0, help="Total amount charged to date")
+        paperless_billing = st.radio("Paperless Billing?", [0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
+        payment_method = st.selectbox("Payment Method", ["Electronic check", "Mailed check", "Bank transfer (automatic)", "Credit card (automatic)"])
+        
+        st.markdown("</div>", unsafe_allow_html=True)
+        
+        # Service Section
+        st.markdown("<div class='form-group'><h3 class='form-group-title'>🌐 Service Details</h3>", unsafe_allow_html=True)
+        
+        contract = st.selectbox("Contract Type", ["Month-to-month", "One year", "Two year"], help="Contract length")
+        internet_service = st.selectbox("Internet Service", ["Fiber optic", "DSL", "No"], help="Type of internet service")
+        
+        st.markdown("</div>", unsafe_allow_html=True)
+        
+        # Divider
+        st.markdown("<div class='custom-divider'></div>", unsafe_allow_html=True)
+        
+        # Buttons
+        col1, col2 = st.columns(2)
+        with col1:
+            submit_button = st.form_submit_button("📊 Predict Churn")
+        with col2:
+            clear_button = st.form_submit_button("🔄 Clear Form")
+
+        if clear_button:
+            st.experimental_rerun()
+
+        if submit_button:
+            if (monthly_charges == 0 or total_charges == 0 or tenure == 0):
+                st.error("Please fill in all the fields correctly before submitting.")
+            else:
+                with st.spinner("Analyzing telecom data..."):
+                    # Add a slight delay for effect
+                    import time
+                    time.sleep(1)
+                    
+                    contract_encoded = [1 if contract == "Month-to-month" else 0, 1 if contract == "One year" else 0, 1 if contract == "Two year" else 0]
+                    internet_service_encoded = [1 if internet_service == "Fiber optic" else 0, 1 if internet_service == "DSL" else 0, 1 if internet_service == "No" else 0]
+                    payment_method_encoded = [1 if payment_method == "Electronic check" else 0, 1 if payment_method == "Mailed check" else 0, 1 if payment_method == "Bank transfer (automatic)" else 0, 1 if payment_method == "Credit card (automatic)" else 0]
+                    gender_encoded = [1 if gender == "Male" else 0, 1 if gender == "Female" else 0]
+                    features = np.array([paperless_billing, monthly_charges, total_charges, tenure] + contract_encoded + internet_service_encoded + payment_method_encoded + gender_encoded)
+                    result = predict_churn(telecom_model, telecom_scaler, features)
+                    
+                    if result == "Churned":
+                        st.error(f"⚠️ Prediction: This customer is likely to churn!")
+                        st.markdown("""
+                        <div style='background-color: rgba(255, 220, 220, 0.3); padding: 15px; border-radius: 10px; border-left: 5px solid #ff5252;'>
+                            <h4>Risk Factors:</h4>
+                            <ul>
+                                <li>Review contract terms and offer upgrades</li>
+                                <li>Consider service quality improvements</li>
+                                <li>Provide competitive pricing options</li>
+                            </ul>
+                        </div>
+                        """, unsafe_allow_html=True)
+                    else:
+                        st.success(f"✅ Prediction: This customer is likely to remain!")
+                        st.markdown("""
+                        <div style='background-color: rgba(220, 255, 220, 0.3); padding: 15px; border-radius: 10px; border-left: 5px solid #4CAF50;'>
+                            <h4>Retention Strengths:</h4>
+                            <ul>
+                                <li>Consider offering loyalty rewards</li>
+                                <li>Opportunity for service upgrades</li>
+                                <li>Monitor for competitive offers they may receive</li>
+                            </ul>
+                        </div>
+                        """, unsafe_allow_html=True)
+
+    st.markdown("</div>", unsafe_allow_html=True)
+
+# Video controls - Optional feature
+with st.sidebar:
+    st.markdown("<hr>", unsafe_allow_html=True)
+    st.markdown("<h3 style='color: white; text-align: center;'>Video Controls</h3>", unsafe_allow_html=True)
+    
+    video_opacity = st.slider("Background Opacity", 0.1, 1.0, 0.6, 0.1)
+    
+    # Apply opacity change with JavaScript
+    st.markdown(
+        f"""
+        <script>
+            document.addEventListener('DOMContentLoaded', (event) => {{
+                const videoElem = document.querySelector('.video-background');
+                if (videoElem) {{
+                    videoElem.style.opacity = "{video_opacity}";
+                }}
+            }});
+        </script>
+        """,
+        unsafe_allow_html=True
+    )
+
+# Footer with animated gradient
+st.markdown("""
+<div style='text-align: center; margin-top: 40px; padding: 20px; background: linear-gradient(90deg, rgba(0,0,0,0.7), rgba(0,0,0,0.5), rgba(0,0,0,0.7)); border-radius: 10px; animation: gradientBG 10s ease infinite;'>
+    <p style='color: #ddd; font-size: 0.9rem;'>
+        © 2025 Churn Prediction Tool | Built with Streamlit
+    </p>
+</div>
+<style>
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+</style>
+""", unsafe_allow_html=True)
