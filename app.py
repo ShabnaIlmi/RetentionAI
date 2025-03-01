@@ -402,13 +402,30 @@ st.markdown(
 if 'form_submitted' not in st.session_state:
     st.session_state.form_submitted = False
 
-# Function to reset form fields
+# Fixed reset_form function that properly clears all form inputs
 def reset_form():
-    for key in st.session_state.keys():
-        if key != 'model_type':  # Keep the model type selection
-            del st.session_state[key]
+    # Save the model_type to restore it after clearing
+    current_model_type = st.session_state.get('model_type', 'Bank Customer')
+    
+    # List of keys to keep (don't reset)
+    keys_to_keep = ['model_type']
+    
+    # Get all keys in session state
+    all_keys = list(st.session_state.keys())
+    
+    # Remove keys that are not in the keep list
+    for key in all_keys:
+        if key not in keys_to_keep:
+            if key in st.session_state:
+                del st.session_state[key]
+    
+    # Restore model_type
+    st.session_state.model_type = current_model_type
+    
+    # Reset form_submitted flag
     st.session_state.form_submitted = False
-    # Force the component to re-render
+    
+    # Force rerun to show cleared form
     st.rerun()
 
 # App Title
@@ -636,15 +653,16 @@ elif model_type == "Telecom Customer":
                     # Store prediction result in session state
                     st.session_state.prediction_result = result
                     
+                    
                     if result == "Churned":
                         st.error(f"⚠️ Prediction: This customer is likely to churn!")
                         st.markdown("""
                         <div style='background-color: rgba(255, 220, 220, 0.3); padding: 15px; border-radius: 10px; border-left: 5px solid #ff5252;'>
                             <h4 style="color: #000000;">Risk Factors:</h4>
                             <ul style="color: #000000;">
-                                <li>Review contract terms and offer upgrades</li>
-                                <li>Consider service quality improvements</li>
-                                <li>Provide competitive pricing options</li>
+                                <li>Consider reviewing their account benefits</li>
+                                <li>Reach out to improve satisfaction</li>
+                                <li>Offer personalized retention incentives</li>
                             </ul>
                         </div>
                         """, unsafe_allow_html=True)
@@ -654,14 +672,14 @@ elif model_type == "Telecom Customer":
                         <div style='background-color: rgba(220, 255, 220, 0.3); padding: 15px; border-radius: 10px; border-left: 5px solid #4CAF50;'>
                             <h4 style="color: #000000;">Retention Strengths:</h4>
                             <ul style="color: #000000;">
-                                <li>Consider offering loyalty rewards</li>
-                                <li>Opportunity for service upgrades</li>
-                                <li>Monitor for competitive offers they may receive</li>
+                                <li>Consider upselling additional products</li>
+                                <li>Encourage referrals from this loyal customer</li>
+                                <li>Monitor for any changes in engagement patterns</li>
                             </ul>
                         </div>
                         """, unsafe_allow_html=True)
 
-   # Clear button outside the form
+    # Clear button outside the form
     if st.session_state.get('form_submitted', False):
         if st.button("🔄 Clear Form", key="bank_clear"):
             reset_form()
