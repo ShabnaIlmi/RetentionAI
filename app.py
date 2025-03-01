@@ -150,12 +150,17 @@ st.markdown(
             transform: translateY(-2px);
         }
         
-        /* Label styling */
-        .stTextInput label, .stNumberInput label, .stSelectbox label, .css-16huue1 {
+        /* Label styling - UPDATED to BLACK */
+        .stTextInput label, .stNumberInput label, .stSelectbox label, .stRadio label, .stSlider label, .css-16huue1 {
             font-weight: 600 !important;
             font-size: 17px !important;
-            color: #333 !important;
+            color: #000000 !important; /* Changed to black */
             margin-bottom: 8px !important;
+            background-color: rgba(255, 255, 255, 0.8); /* Added background for better contrast */
+            padding: 5px 10px !important;
+            border-radius: 5px !important;
+            display: inline-block !important;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
         }
         
         /* Input field container */
@@ -201,7 +206,7 @@ st.markdown(
             background-color: #FF9E00 !important;
         }
         
-        /* Button styling */
+        /* Button styling - ENHANCED */
         .stButton>button {
             background: linear-gradient(90deg, #FF5F6D, #FFC371);
             color: white;
@@ -216,6 +221,19 @@ st.markdown(
             font-size: 16px;
             width: 100%;
             margin-top: 15px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .stButton>button:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: all 0.6s ease;
         }
         
         .stButton>button:hover {
@@ -224,9 +242,33 @@ st.markdown(
             background: linear-gradient(90deg, #FF5F6D, #FFC371);
         }
         
+        .stButton>button:hover:before {
+            left: 100%;
+        }
+        
         .stButton>button:active {
             transform: translateY(1px);
             box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Predict button specific styling */
+        .stButton:nth-of-type(1)>button {
+            background: linear-gradient(90deg, #36D1DC, #5B86E5);
+            border-bottom: 4px solid #3672dc;
+        }
+        
+        .stButton:nth-of-type(1)>button:hover {
+            background: linear-gradient(90deg, #5B86E5, #36D1DC);
+        }
+        
+        /* Clear button specific styling */
+        .stButton:nth-of-type(2)>button {
+            background: linear-gradient(90deg, #FF9966, #FF5E62);
+            border-bottom: 4px solid #FF5E62;
+        }
+        
+        .stButton:nth-of-type(2)>button:hover {
+            background: linear-gradient(90deg, #FF5E62, #FF9966);
         }
         
         /* Success message styling */
