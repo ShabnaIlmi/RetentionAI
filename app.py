@@ -614,6 +614,9 @@ if model_type == "Bank Customer":
             )
 
 elif model_type == "Telecom Customer":
+    # Import necessary libraries at the top of your file if not already imported
+    import numpy as np
+    
     st.markdown("<div class='form-container'><h2 class='section-header'>📞 Telecom Customer Churn Prediction</h2>", unsafe_allow_html=True)
     
     with st.form(key="telecom_form"):
@@ -682,41 +685,58 @@ elif model_type == "Telecom Customer":
                     import time
                     time.sleep(1)
                     
+                    # Include senior_citizen, partner, dependent and other fields in features
                     contract_encoded = [1 if contract == "Month-to-month" else 0, 1 if contract == "One year" else 0, 1 if contract == "Two year" else 0]
                     internet_service_encoded = [1 if internet_service == "Fiber optic" else 0, 1 if internet_service == "DSL" else 0, 1 if internet_service == "No" else 0]
                     payment_method_encoded = [1 if payment_method == "Electronic check" else 0, 1 if payment_method == "Mailed check" else 0, 1 if payment_method == "Bank transfer (automatic)" else 0, 1 if payment_method == "Credit card (automatic)" else 0]
                     gender_encoded = [1 if gender == "Male" else 0, 1 if gender == "Female" else 0]
-                    features = np.array([paperless_billing, monthly_charges, total_charges, tenure] + contract_encoded + internet_service_encoded + payment_method_encoded + gender_encoded)
-                    result = predict_churn(telecom_model, telecom_scaler, features)
                     
-                    # Store prediction result in session state
-                    st.session_state.prediction_result = result
+                    # Add all radio button values to features 
+                    features = np.array([
+                        paperless_billing, monthly_charges, total_charges, tenure, 
+                        senior_citizen, partner, dependent, phone_service, 
+                        multiple_lines, online_security, online_backup, 
+                        device_protocol, tech_support, streaming_tv, streaming_movie
+                    ] + contract_encoded + internet_service_encoded + payment_method_encoded + gender_encoded)
                     
-                    
-                    if result == "Churned":
-                        st.error(f"⚠️ Prediction: This customer is likely to churn!")
-                        st.markdown("""
-                        <div style='background-color: rgba(255, 220, 220, 0.3); padding: 15px; border-radius: 10px; border-left: 5px solid #ff5252;'>
-                            <h4 style="color: #000000;">Risk Factors:</h4>
-                            <ul style="color: #000000;">
-                                <li>Consider reviewing their account benefits</li>
-                                <li>Reach out to improve satisfaction</li>
-                                <li>Offer personalized retention incentives</li>
-                            </ul>
-                        </div>
-                        """, unsafe_allow_html=True)
-                    else:
-                        st.success(f"✅ Prediction: This customer is likely to remain!")
-                        st.markdown("""
-                        <div style='background-color: rgba(220, 255, 220, 0.3); padding: 15px; border-radius: 10px; border-left: 5px solid #4CAF50;'>
-                            <h4 style="color: #000000;">Retention Strengths:</h4>
-                            <ul style="color: #000000;">
-                                <li>Consider upselling additional products</li>
-                                <li>Encourage referrals from this loyal customer</li>
-                                <li>Monitor for any changes in engagement patterns</li>
-                            </ul>
-                        </div>
-                        """, unsafe_allow_html=True)
+                    # Make sure telecom_model, telecom_scaler, and predict_churn are defined
+                    try:
+                        result = predict_churn(telecom_model, telecom_scaler, features)
+                        
+                        # Store prediction result in session state
+                        st.session_state.prediction_result = result
+                        
+                        if result == "Churned":
+                            st.error(f"⚠️ Prediction: This customer is likely to churn!")
+                            st.markdown("""
+                            <div style='background-color: rgba(255, 220, 220, 0.3); padding: 15px; border-radius: 10px; border-left: 5px solid #ff5252;'>
+                                <h4 style="color: #000000;">Risk Factors:</h4>
+                                <ul style="color: #000000;">
+                                    <li>Consider reviewing their account benefits</li>
+                                    <li>Reach out to improve satisfaction</li>
+                                    <li>Offer personalized retention incentives</li>
+                                </ul>
+                            </div>
+                            """, unsafe_allow_html=True)
+                        else:
+                            st.success(f"✅ Prediction: This customer is likely to remain!")
+                            st.markdown("""
+                            <div style='background-color: rgba(220, 255, 220, 0.3); padding: 15px; border-radius: 10px; border-left: 5px solid #4CAF50;'>
+                                <h4 style="color: #000000;">Retention Strengths:</h4>
+                                <ul style="color: #000000;">
+                                    <li>Consider upselling additional products</li>
+                                    <li>Encourage referrals from this loyal customer</li>
+                                    <li>Monitor for any changes in engagement patterns</li>
+                                </ul>
+                            </div>
+                            """, unsafe_allow_html=True)
+                    except NameError as e:
+                        st.error(f"Model error: {str(e)}. Make sure telecom_model, telecom_scaler, and predict_churn are properly defined.")
+                    except Exception as e:
+                        st.error(f"An error occurred: {str(e)}")
+    
+    # Close the form-container div that was opened at the beginning
+    st.markdown("</div>", unsafe_allow_html=True)
 
     # Replace your clear button implementation with this:
     if st.session_state.get('form_submitted', False):
