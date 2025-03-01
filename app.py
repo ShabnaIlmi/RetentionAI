@@ -402,24 +402,42 @@ st.markdown(
 if 'form_submitted' not in st.session_state:
     st.session_state.form_submitted = False
 
-# Fixed reset_form function that properly clears all form inputs
 def reset_form():
     # Save the model_type to restore it after clearing
     current_model_type = st.session_state.get('model_type', 'Bank Customer')
     
-    # List of keys to keep (don't reset)
-    keys_to_keep = ['model_type']
+    # List of all form fields for bank model
+    bank_fields = [
+        'gender', 'age', 'credit_score', 'tenure', 'balance', 
+        'estimated_salary', 'num_of_products', 'has_cr_card', 
+        'card_type', 'is_active_member', 'satisfaction_score', 
+        'points_earned'
+    ]
     
-    # Create a list of keys to remove (all except those in keys_to_keep)
-    keys_to_remove = [key for key in st.session_state.keys() if key not in keys_to_keep]
+    # List of all form fields for telecom model
+    telecom_fields = [
+        'gender', 'tenure', 'monthly_charges', 'total_charges',
+        'paperless_billing', 'payment_method', 'contract', 
+        'internet_service'
+    ]
     
-    # Remove only the keys that should be removed
-    for key in keys_to_remove:
-        if key in st.session_state:
-            del st.session_state[key]
+    # Combine all fields
+    all_fields = list(set(bank_fields + telecom_fields))
+    
+    # Clear all form fields except model_type
+    for field in all_fields:
+        if field in st.session_state:
+            del st.session_state[field]
     
     # Reset form_submitted flag
     st.session_state.form_submitted = False
+    
+    # Clear prediction result if it exists
+    if 'prediction_result' in st.session_state:
+        del st.session_state['prediction_result']
+    
+    # Retain the model type
+    st.session_state.model_type = current_model_type
     
     # Force rerun to show cleared form
     st.rerun()
