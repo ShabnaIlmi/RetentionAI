@@ -520,4 +520,8 @@ st.markdown("""
     100% { background-position: 0% 50%; }
 }
 </style>
+<<<<<<< HEAD
 """, unsafe_allow_html=True)
+=======
+""", unsafe_allow_html=True)
+>>>>>>> ee2c7bc40dc0a4287fdc68e47250824764458246
