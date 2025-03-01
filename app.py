@@ -150,17 +150,34 @@ st.markdown(
             transform: translateY(-2px);
         }
         
-        /* Label styling - UPDATED to BLACK */
-        .stTextInput label, .stNumberInput label, .stSelectbox label, .stRadio label, .stSlider label, .css-16huue1 {
+        /* Label styling for ALL form elements - UPDATED to BLACK and increased specificity */
+        .stTextInput > div > label, 
+        .stNumberInput > div > label, 
+        .stSelectbox > div > label, 
+        .stRadio > div > label, 
+        .stSlider > div > label, 
+        .css-16huue1,
+        .element-container p,
+        p {
             font-weight: 600 !important;
             font-size: 17px !important;
             color: #000000 !important; /* Changed to black */
             margin-bottom: 8px !important;
-            background-color: rgba(255, 255, 255, 0.8); /* Added background for better contrast */
+            background-color: rgba(255, 255, 255, 0.9) !important; /* Increased opacity for better contrast */
             padding: 5px 10px !important;
             border-radius: 5px !important;
             display: inline-block !important;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
+        }
+        
+        /* Ensure all form labels have black text */
+        .form-group-title, 
+        .form-group label,
+        [data-baseweb="radio"] span,
+        [data-baseweb="select"] span,
+        [data-baseweb="checkbox"] span {
+            color: #000000 !important;
+            font-weight: 600 !important;
         }
         
         /* Input field container */
@@ -187,7 +204,7 @@ st.markdown(
             box-shadow: 0 0 0 3px rgba(255, 158, 0, 0.2) !important;
         }
         
-        /* Radio button styling */
+        /* Radio button styling and text */
         .stRadio>div {
             background-color: rgba(255, 255, 255, 0.8);
             padding: 15px;
@@ -199,6 +216,14 @@ st.markdown(
         
         .stRadio>div:hover {
             border-color: #FF9E00;
+        }
+        
+        /* Make radio button text black */
+        .stRadio [data-testid="stMarkdownContainer"] p {
+            color: #000000 !important;
+            font-weight: 500 !important;
+            background-color: transparent !important;
+            box-shadow: none !important;
         }
         
         /* Slider styling */
@@ -306,6 +331,7 @@ st.markdown(
         .stMarkdown div[data-testid="stMarkdownContainer"] p {
             font-size: 15px !important;
             line-height: 1.6 !important;
+            color: #000000 !important; /* Ensure tooltip text is also black */
         }
         
         /* Form group styling */
@@ -318,13 +344,17 @@ st.markdown(
             border-left: 4px solid #FF9E00;
         }
 
+        /* Form group title styling - Ensure it's black */
         .form-group-title {
             font-size: 18px;
             font-weight: 600;
-            color: #333333; /* Darker shade of black for better contrast */
+            color: #000000 !important; /* Explicitly black */
             margin-bottom: 15px;
             border-bottom: 1px solid #eee;
             padding-bottom: 10px;
+            background-color: transparent !important; /* Remove any background */
+            box-shadow: none !important; /* Remove any shadow */
+            display: block !important; /* Full width */
         }
         
         /* Divider styling */
@@ -333,6 +363,12 @@ st.markdown(
             background: linear-gradient(90deg, transparent, #FF9E00, transparent);
             margin: 30px 0;
             opacity: 0.7;
+        }
+        
+        /* Force black text for all selectbox options */
+        [data-baseweb="select-dropdown"] li,
+        [data-baseweb="select-dropdown"] span {
+            color: #000000 !important;
         }
     </style>
     """,
@@ -439,8 +475,8 @@ if model_type == "Bank Customer":
                         st.error(f"⚠️ Prediction: This customer is likely to churn!")
                         st.markdown("""
                         <div style='background-color: rgba(255, 220, 220, 0.3); padding: 15px; border-radius: 10px; border-left: 5px solid #ff5252;'>
-                            <h4>Risk Factors:</h4>
-                            <ul>
+                            <h4 style="color: #000000;">Risk Factors:</h4>
+                            <ul style="color: #000000;">
                                 <li>Consider reviewing their account benefits</li>
                                 <li>Reach out to improve satisfaction</li>
                                 <li>Offer personalized retention incentives</li>
@@ -451,8 +487,8 @@ if model_type == "Bank Customer":
                         st.success(f"✅ Prediction: This customer is likely to remain!")
                         st.markdown("""
                         <div style='background-color: rgba(220, 255, 220, 0.3); padding: 15px; border-radius: 10px; border-left: 5px solid #4CAF50;'>
-                            <h4>Retention Strengths:</h4>
-                            <ul>
+                            <h4 style="color: #000000;">Retention Strengths:</h4>
+                            <ul style="color: #000000;">
                                 <li>Consider upselling additional products</li>
                                 <li>Encourage referrals from this loyal customer</li>
                                 <li>Monitor for any changes in engagement patterns</li>
@@ -525,8 +561,8 @@ elif model_type == "Telecom Customer":
                         st.error(f"⚠️ Prediction: This customer is likely to churn!")
                         st.markdown("""
                         <div style='background-color: rgba(255, 220, 220, 0.3); padding: 15px; border-radius: 10px; border-left: 5px solid #ff5252;'>
-                            <h4>Risk Factors:</h4>
-                            <ul>
+                            <h4 style="color: #000000;">Risk Factors:</h4>
+                            <ul style="color: #000000;">
                                 <li>Review contract terms and offer upgrades</li>
                                 <li>Consider service quality improvements</li>
                                 <li>Provide competitive pricing options</li>
@@ -537,8 +573,8 @@ elif model_type == "Telecom Customer":
                         st.success(f"✅ Prediction: This customer is likely to remain!")
                         st.markdown("""
                         <div style='background-color: rgba(220, 255, 220, 0.3); padding: 15px; border-radius: 10px; border-left: 5px solid #4CAF50;'>
-                            <h4>Retention Strengths:</h4>
-                            <ul>
+                            <h4 style="color: #000000;">Retention Strengths:</h4>
+                            <ul style="color: #000000;">
                                 <li>Consider offering loyalty rewards</li>
                                 <li>Opportunity for service upgrades</li>
                                 <li>Monitor for competitive offers they may receive</li>
