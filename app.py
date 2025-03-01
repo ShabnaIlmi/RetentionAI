@@ -17,51 +17,51 @@ def predict_churn(model, scaler, features):
     prediction = model.predict(scaled_features)
     return "Churned" if prediction[0] == 1 else "Not Churned"
 
-# Function to get base64 encoded image
-def get_base64_of_bin_file(bin_file):
-    with open(bin_file, 'rb') as f:
-        data = f.read()
-    return base64.b64encode(data).decode()
+# Streamlit UI
+st.set_page_config(page_title="Churn Prediction App", page_icon="🔍", layout="wide")
 
-# Function to set background image from local file
-def set_bg_from_local(image_file):
-    with open(image_file, "rb") as f:
-        img_data = f.read()
-    b64_encoded = base64.b64encode(img_data).decode()
+# Function to set video background
+def set_video_background(video_path):
+    video_file = open(video_path, 'rb')
+    video_bytes = video_file.read()
+    
     st.markdown(
         f"""
         <style>
         .stApp {{
-            background-image: url("data:image/png;base64,{b64_encoded}");
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
+            background-color: transparent;
+        }}
+        .video-background {{
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -1;
+            opacity: 0.6;
         }}
         </style>
+        <video autoplay muted loop class="video-background">
+            <source src="data:video/mp4;base64,{base64.b64encode(video_bytes).decode()}" type="video/mp4">
+        </video>
         """,
         unsafe_allow_html=True
     )
 
-# Streamlit UI
-st.set_page_config(page_title="Churn Prediction App", page_icon="🔍", layout="wide")
-
-# Set background image from assets folder
-bg_image_path = os.path.join("assets", "background.jpg")  # Update with your image filename
+# Set video background from assets folder
+video_path = os.path.join("assets", "background.mp4")  # Update with your video filename
 try:
-    set_bg_from_local(bg_image_path)
+    set_video_background(video_path)
 except Exception as e:
-    st.warning(f"Could not load background image: {e}")
-    # Fallback to an online image
+    st.warning(f"Could not load background video: {e}")
+    # Fallback to a color background
     st.markdown(
         """
         <style>
         .stApp {
-            background-image: url("https://source.unsplash.com/1600x900/?digital,blue");
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
+            background: linear-gradient(135deg, #1c3b5a, #0a192f);
         }
         </style>
         """,
@@ -77,7 +77,7 @@ st.markdown(
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
-        /* Main title styling - UPDATED COLOR */
+        /* Main title styling */
         .main-title {
             text-align: center;
             color: #FF9E00;
@@ -103,9 +103,9 @@ st.markdown(
             }
         }
         
-        /* Form container styling - ENHANCED */
+        /* Form container styling - ENHANCED with higher opacity for better contrast against video */
         .form-container {
-            background-color: rgba(255, 255, 255, 0.92);
+            background-color: rgba(255, 255, 255, 0.95);
             border-radius: 20px;
             padding: 30px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
@@ -130,7 +130,7 @@ st.markdown(
             text-align: center;
         }
         
-        /* Input field styling - ENHANCED */
+        /* Input field styling */
         .stTextInput>div>div>input, 
         .stNumberInput>div>div>input {
             border-radius: 10px;
@@ -201,7 +201,7 @@ st.markdown(
             background-color: #FF9E00 !important;
         }
         
-        /* Button styling - ENHANCED */
+        /* Button styling */
         .stButton>button {
             background: linear-gradient(90deg, #FF5F6D, #FFC371);
             color: white;
@@ -268,7 +268,7 @@ st.markdown(
         
         /* Form group styling */
         .form-group {
-            background-color: rgba(255, 255, 255, 0.6);
+            background-color: rgba(255, 255, 255, 0.8);
             border-radius: 12px;
             padding: 20px;
             margin-bottom: 20px;
@@ -506,6 +506,28 @@ elif model_type == "Telecom Customer":
 
     st.markdown("</div>", unsafe_allow_html=True)
 
+# Video controls - Optional feature
+with st.sidebar:
+    st.markdown("<hr>", unsafe_allow_html=True)
+    st.markdown("<h3 style='color: white; text-align: center;'>Video Controls</h3>", unsafe_allow_html=True)
+    
+    video_opacity = st.slider("Background Opacity", 0.1, 1.0, 0.6, 0.1)
+    
+    # Apply opacity change with JavaScript
+    st.markdown(
+        f"""
+        <script>
+            document.addEventListener('DOMContentLoaded', (event) => {{
+                const videoElem = document.querySelector('.video-background');
+                if (videoElem) {{
+                    videoElem.style.opacity = "{video_opacity}";
+                }}
+            }});
+        </script>
+        """,
+        unsafe_allow_html=True
+    )
+
 # Footer with animated gradient
 st.markdown("""
 <div style='text-align: center; margin-top: 40px; padding: 20px; background: linear-gradient(90deg, rgba(0,0,0,0.7), rgba(0,0,0,0.5), rgba(0,0,0,0.7)); border-radius: 10px; animation: gradientBG 10s ease infinite;'>
@@ -520,8 +542,4 @@ st.markdown("""
     100% { background-position: 0% 50%; }
 }
 </style>
-<<<<<<< HEAD
 """, unsafe_allow_html=True)
-=======
-""", unsafe_allow_html=True)
->>>>>>> ee2c7bc40dc0a4287fdc68e47250824764458246
