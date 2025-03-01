@@ -380,26 +380,29 @@ st.markdown("<h1 class='main-title'>🔍 Customer Churn Prediction</h1>", unsafe
 
 # Sidebar configuration
 with st.sidebar:
-    st.markdown("<h2 style='color: white; text-align: center;'>Prediction Options</h2>", unsafe_allow_html=True)
+    st.markdown("<h2 style='color: white; text-align: center; font-family: \"Poppins\", sans-serif;'>Prediction Options</h2>", unsafe_allow_html=True)
 
     st.markdown("""
     <style>
-    div.stRadio > div[role="radiogroup"] > label:first-child {
+    /* Styling the radio buttons */
+    div.stRadio > div[role="radiogroup"] label {
         color: white !important;
+        font-family: "Poppins", sans-serif;
+        font-size: 1rem;
     }
     </style>
     """, unsafe_allow_html=True)
-    
+
     model_type = st.radio(
         "Choose the type of Churn Prediction:",
         ["Bank Customer", "Telecom Customer"],
         format_func=lambda x: f"📊 {x}"
     )
-    
+
     st.markdown("<hr>", unsafe_allow_html=True)
-    
+
     st.markdown("""
-    <div style='background-color: rgba(255,255,255,0.1); padding: 15px; border-radius: 10px; margin-top: 20px;'>
+    <div style='background-color: rgba(255,255,255,0.1); padding: 15px; border-radius: 10px; margin-top: 20px; font-family: "Poppins", sans-serif;'>
         <h3 style='color: white; text-align: center;'>About</h3>
         <p style='color: white; font-size: 0.9rem;'>
             This app uses machine learning models to predict customer churn in Bank and Telecom sectors.
