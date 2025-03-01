@@ -381,9 +381,17 @@ st.markdown("<h1 class='main-title'>🔍 Customer Churn Prediction</h1>", unsafe
 # Sidebar configuration
 with st.sidebar:
     st.markdown("<h2 style='color: white; text-align: center;'>Prediction Options</h2>", unsafe_allow_html=True)
+
+    st.markdown("""
+    <style>
+    div.stRadio > div[role="radiogroup"] > label:first-child {
+        color: white !important;
+    }
+    </style>
+    """, unsafe_allow_html=True)
     
     model_type = st.radio(
-        st.markdown("<h2 style='color: white; text-align: center;'>Choose the type of Churn Prediction</h2>", unsafe_allow_html=True)
+        "Choose the type of Churn Prediction:",
         ["Bank Customer", "Telecom Customer"],
         format_func=lambda x: f"📊 {x}"
     )
