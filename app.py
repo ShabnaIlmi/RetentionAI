@@ -317,11 +317,11 @@ st.markdown(
             box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
             border-left: 4px solid #FF9E00;
         }
-        
+
         .form-group-title {
             font-size: 18px;
             font-weight: 600;
-            color: #000000;
+            color: #333333; /* Darker shade of black for better contrast */
             margin-bottom: 15px;
             border-bottom: 1px solid #eee;
             padding-bottom: 10px;
