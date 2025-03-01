@@ -105,18 +105,18 @@ st.markdown(
         
         /* Form container styling - ENHANCED with higher opacity for better contrast against video */
         .form-container {
-            background-color: rgba(20, 20, 20, 0.95);
+            background-color: rgba(20, 20, 20, 0.9);  /* Darker background with slight opacity */
             border-radius: 20px;
             padding: 30px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6); /* Slightly stronger shadow for more contrast */
             margin: 20px 0;
-            border-left: 5px solid #FF9E00;
+            border-left: 5px solid #FF9E00; /* Orange highlight on the left */
             transition: all 0.3s ease;
         }
-        
+
         .form-container:hover {
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
-            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7); /* Stronger shadow on hover */
+            transform: translateY(-5px); /* Lift effect on hover */
         }
         
         /* Section headers */
