@@ -661,7 +661,7 @@ elif model_type == "Telecom Customer":
         multiple_lines = st.radio("Multiple Lines", [0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
         online_security = st.radio("Online Security", [0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
         online_backup = st.radio("Online Backup", [0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
-        device_protocol = st.radio("Device Protocol", [0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
+        device_protection = st.radio("Device Protection", [0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
         tech_support = st.radio("Tech Support", [0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
         streaming_tv = st.radio("Streaming TV", [0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
         streaming_movie = st.radio("Streaming Movie", [0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
