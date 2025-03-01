@@ -380,18 +380,22 @@ st.markdown("<h1 class='main-title'>🔍 Customer Churn Prediction</h1>", unsafe
 
 # Sidebar configuration
 with st.sidebar:
-    st.markdown("<h2 style='color: white; text-align: center; font-family: \"Poppins\", sans-serif;'>Prediction Options</h2>", unsafe_allow_html=True)
-
     st.markdown("""
     <style>
-    /* Styling the radio buttons */
+    @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
+    h2, h3, div.stRadio > div[role="radiogroup"] label, p {
+        font-family: 'Lobster', cursive !important;
+    }
+
     div.stRadio > div[role="radiogroup"] label {
         color: white !important;
-        font-family: "Poppins", sans-serif;
-        font-size: 1rem;
+        font-size: 1.1rem;
     }
     </style>
     """, unsafe_allow_html=True)
+
+    st.markdown("<h2 style='color: white; text-align: center;'>Prediction Options</h2>", unsafe_allow_html=True)
 
     model_type = st.radio(
         "Choose the type of Churn Prediction:",
@@ -402,13 +406,13 @@ with st.sidebar:
     st.markdown("<hr>", unsafe_allow_html=True)
 
     st.markdown("""
-    <div style='background-color: rgba(255,255,255,0.1); padding: 15px; border-radius: 10px; margin-top: 20px; font-family: "Poppins", sans-serif;'>
+    <div style='background-color: rgba(255,255,255,0.1); padding: 15px; border-radius: 10px; margin-top: 20px;'>
         <h3 style='color: white; text-align: center;'>About</h3>
-        <p style='color: white; font-size: 0.9rem;'>
+        <p style='color: white; font-size: 1rem;'>
             This app uses machine learning models to predict customer churn in Bank and Telecom sectors.
             Enter customer details to predict whether they are likely to churn.
         </p>
-        <p style='color: white; font-size: 0.9rem; text-align: center; font-style: italic; margin-top: 15px;'>
+        <p style='color: white; font-size: 1rem; text-align: center; font-style: italic; margin-top: 15px;'>
             Developed by Fathima Shabna Ilmi
         </p>
     </div>
