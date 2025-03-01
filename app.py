@@ -170,6 +170,19 @@ st.markdown(
             box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
         }
         
+        /* Make sure radio labels have the same styling */
+        .stRadio > div > div > div > label {
+            font-weight: 600 !important;
+            font-size: 17px !important;
+            color: #000000 !important;
+            margin-bottom: 8px !important;
+            background-color: rgba(255, 255, 255, 0.9) !important;
+            padding: 5px 10px !important;
+            border-radius: 5px !important;
+            display: inline-block !important;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
+        }
+        
         /* Ensure all form labels have black text */
         .form-group-title, 
         .form-group label,
@@ -224,6 +237,16 @@ st.markdown(
             font-weight: 500 !important;
             background-color: transparent !important;
             box-shadow: none !important;
+        }
+        
+        /* Style radio buttons labels */
+        .stRadio label {
+            background-color: rgba(255, 255, 255, 0.9) !important;
+            padding: 5px 10px !important;
+            border-radius: 5px !important;
+            margin-bottom: 8px !important;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
+            display: inline-block !important;
         }
         
         /* Slider styling */
@@ -446,7 +469,7 @@ if model_type == "Bank Customer":
         st.markdown("<div class='form-group'><h3 class='form-group-title'>💰 Account Information</h3>", unsafe_allow_html=True)
         
         tenure = st.number_input("Tenure (Years)", min_value=0, max_value=10, help="Years as a customer")
-        balance = st.number_input("Balance", help="Current account balance")
+        balance = st.number_input("Balance", min_value=0.0, help="Current account balance")
         estimated_salary = st.number_input("Estimated Salary", help="Customer's estimated annual salary")
         
         st.markdown("</div>", unsafe_allow_html=True)
@@ -455,7 +478,12 @@ if model_type == "Bank Customer":
         st.markdown("<div class='form-group'><h3 class='form-group-title'>🛒 Product Usage</h3>", unsafe_allow_html=True)
         
         num_of_products = st.number_input("Number of Products", min_value=1, max_value=4, help="Number of bank products used")
+        
+        # Add a container div around the radio label for consistent styling
+        st.markdown("<div class='radio-label-container'>", unsafe_allow_html=True)
         has_cr_card = st.radio("Has Credit Card?", [0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
+        st.markdown("</div>", unsafe_allow_html=True)
+        
         card_type = st.selectbox("Card Type", ["DIAMOND", "GOLD", "SILVER", "PLATINUM"])
         
         st.markdown("</div>", unsafe_allow_html=True)
@@ -463,7 +491,11 @@ if model_type == "Bank Customer":
         # Engagement Metrics Section
         st.markdown("<div class='form-group'><h3 class='form-group-title'>📊 Engagement Metrics</h3>", unsafe_allow_html=True)
         
+        # Add a container div around the radio label for consistent styling
+        st.markdown("<div class='radio-label-container'>", unsafe_allow_html=True)
         is_active_member = st.radio("Is Active Member?", [0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
+        st.markdown("</div>", unsafe_allow_html=True)
+        
         satisfaction_score = st.slider("Satisfaction Score", 1, 5, help="Customer satisfaction rating (1-5)")
         points_earned = st.number_input("Points Earned", min_value=0, help="Reward points earned")
         
@@ -483,7 +515,7 @@ if model_type == "Bank Customer":
             st.experimental_rerun()
 
         if submit_button:
-            if (credit_score == 0 or age == 0 or balance == 0 or estimated_salary == 0 or points_earned == 0):
+            if (credit_score == 0 or age == 0 or estimated_salary == 0 or points_earned == 0):
                 st.error("Please fill in all the fields correctly before submitting.")
             else:
                 with st.spinner("Analyzing customer data..."):
@@ -540,7 +572,12 @@ elif model_type == "Telecom Customer":
         
         monthly_charges = st.number_input("Monthly Charges", min_value=0.0, help="Monthly bill amount")
         total_charges = st.number_input("Total Charges", min_value=0.0, help="Total amount charged to date")
+        
+        # Add a container div around the radio label for consistent styling
+        st.markdown("<div class='radio-label-container'>", unsafe_allow_html=True)
         paperless_billing = st.radio("Paperless Billing?", [0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
+        st.markdown("</div>", unsafe_allow_html=True)
+        
         payment_method = st.selectbox("Payment Method", ["Electronic check", "Mailed check", "Bank transfer (automatic)", "Credit card (automatic)"])
         
         st.markdown("</div>", unsafe_allow_html=True)
