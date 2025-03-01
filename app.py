@@ -382,15 +382,25 @@ st.markdown("<h1 class='main-title'>🔍 Customer Churn Prediction</h1>", unsafe
 with st.sidebar:
     st.markdown("""
     <style>
-    @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
     h2, h3, div.stRadio > div[role="radiogroup"] label, p {
-        font-family: 'Lobster', cursive !important;
+        font-family: 'Poppins', sans-serif !important;
     }
 
     div.stRadio > div[role="radiogroup"] label {
         color: white !important;
-        font-size: 1.1rem;
+        font-size: 1rem;
+        font-weight: 400;
+    }
+
+    h2, h3 {
+        font-weight: 600;
+    }
+
+    p {
+        font-size: 0.9rem;
+        font-weight: 300;
     }
     </style>
     """, unsafe_allow_html=True)
@@ -408,11 +418,11 @@ with st.sidebar:
     st.markdown("""
     <div style='background-color: rgba(255,255,255,0.1); padding: 15px; border-radius: 10px; margin-top: 20px;'>
         <h3 style='color: white; text-align: center;'>About</h3>
-        <p style='color: white; font-size: 1rem;'>
+        <p style='color: white;'>
             This app uses machine learning models to predict customer churn in Bank and Telecom sectors.
             Enter customer details to predict whether they are likely to churn.
         </p>
-        <p style='color: white; font-size: 1rem; text-align: center; font-style: italic; margin-top: 15px;'>
+        <p style='color: white; text-align: center; font-style: italic; margin-top: 15px;'>
             Developed by Fathima Shabna Ilmi
         </p>
     </div>
