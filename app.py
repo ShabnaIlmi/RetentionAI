@@ -2,10 +2,8 @@ import streamlit as st
 import numpy as np
 import joblib
 from PIL import Image
-<<<<<<< HEAD
-=======
 import base64
->>>>>>> 79a1111e33dfec9c21c348fd42f2bac3e50e71ee
+import os
 
 # Load models and scalers
 bank_model = joblib.load("bank_churn_model.pkl")
@@ -25,13 +23,16 @@ def get_base64_of_bin_file(bin_file):
         data = f.read()
     return base64.b64encode(data).decode()
 
-# Function to set background image
-def set_bg_from_url(url):
+# Function to set background image from local file
+def set_bg_from_local(image_file):
+    with open(image_file, "rb") as f:
+        img_data = f.read()
+    b64_encoded = base64.b64encode(img_data).decode()
     st.markdown(
         f"""
         <style>
         .stApp {{
-            background-image: url("{url}");
+            background-image: url("data:image/png;base64,{b64_encoded}");
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -44,39 +45,28 @@ def set_bg_from_url(url):
 
 # Streamlit UI
 st.set_page_config(page_title="Churn Prediction App", page_icon="🔍", layout="wide")
-<<<<<<< HEAD
-st.markdown("""
-    <style>
-        body {
-            background-color: #f4f4f4;
-        }
+
+# Set background image from assets folder
+bg_image_path = os.path.join("assets", "background.jpg")  # Update with your image filename
+try:
+    set_bg_from_local(bg_image_path)
+except Exception as e:
+    st.warning(f"Could not load background image: {e}")
+    # Fallback to an online image
+    st.markdown(
+        """
+        <style>
         .stApp {
-            background-color: #ffffff;
-            padding: 20px;
-            border-radius: 15px;
-            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+            background-image: url("https://source.unsplash.com/1600x900/?digital,blue");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
         }
-        h1 {
-            color: #2E3B55;
-            text-align: center;
-        }
-    </style>
-""", unsafe_allow_html=True)
-
-st.title("🔍 Churn Prediction App")
-st.markdown("Use this app to predict customer churn for Bank and Telecom sectors.")
-
-# Sidebar for Image Upload
-st.sidebar.title("Upload Customer Picture")
-uploaded_image = st.sidebar.file_uploader("Choose a picture...", type=["jpg", "png", "jpeg"])
-if uploaded_image is not None:
-    image = Image.open(uploaded_image)
-    st.sidebar.image(image, caption="Uploaded Customer Picture", use_column_width=True)
-=======
->>>>>>> 79a1111e33dfec9c21c348fd42f2bac3e50e71ee
-
-# Set background image
-set_bg_from_url("https://source.unsplash.com/1600x900/?digital,blue")
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
 
 # Custom CSS for advanced form styling
 st.markdown(
@@ -87,104 +77,156 @@ st.markdown(
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
-        /* Main title styling */
+        /* Main title styling - UPDATED COLOR */
         .main-title {
             text-align: center;
-            color: #ffffff;
+            color: #FF9E00;
             font-size: 3.5rem;
             font-weight: 700;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
             margin: 1.5rem 0;
-            background: linear-gradient(90deg, #3a7bd5, #00d2ff);
+            background: linear-gradient(90deg, #FF5F6D, #FFC371);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             padding: 20px;
             background-color: rgba(0, 0, 0, 0.5);
             border-radius: 15px;
+            animation: glow 2s ease-in-out infinite alternate;
         }
         
-        /* Form container styling */
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 5px #fff, 0 0 10px #ff9e00, 0 0 15px #ff9e00;
+            }
+            to {
+                text-shadow: 0 0 10px #fff, 0 0 20px #ff9e00, 0 0 30px #ff9e00;
+            }
+        }
+        
+        /* Form container styling - ENHANCED */
         .form-container {
-            background-color: rgba(255, 255, 255, 0.9);
+            background-color: rgba(255, 255, 255, 0.92);
             border-radius: 20px;
-            padding: 25px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
             margin: 20px 0;
-            border-left: 5px solid #3a7bd5;
+            border-left: 5px solid #FF9E00;
+            transition: all 0.3s ease;
+        }
+        
+        .form-container:hover {
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+            transform: translateY(-5px);
         }
         
         /* Section headers */
         .section-header {
-            color: #3a7bd5;
-            font-size: 1.8rem;
+            color: #FF9E00;
+            font-size: 2rem;
             font-weight: 600;
-            margin-bottom: 20px;
-            border-bottom: 2px solid #3a7bd5;
-            padding-bottom: 10px;
+            margin-bottom: 25px;
+            border-bottom: 2px solid #FF9E00;
+            padding-bottom: 15px;
+            text-align: center;
         }
         
-        /* Input field styling */
+        /* Input field styling - ENHANCED */
         .stTextInput>div>div>input, 
         .stNumberInput>div>div>input {
             border-radius: 10px;
-            padding: 12px;
+            padding: 12px 15px;
             border: 2px solid #ddd;
             transition: all 0.3s ease;
-            box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 12px;
+            font-size: 16px;
+            width: 100%;
         }
         
         .stTextInput>div>div>input:focus, 
         .stNumberInput>div>div>input:focus {
-            border-color: #3a7bd5;
-            box-shadow: 0 0 0 2px rgba(58, 123, 213, 0.2);
+            border-color: #FF9E00;
+            box-shadow: 0 0 0 3px rgba(255, 158, 0, 0.2);
+            transform: translateY(-2px);
+        }
+        
+        /* Label styling */
+        .stTextInput label, .stNumberInput label, .stSelectbox label, .css-16huue1 {
+            font-weight: 600 !important;
+            font-size: 17px !important;
+            color: #333 !important;
+            margin-bottom: 8px !important;
+        }
+        
+        /* Input field container */
+        .input-container {
+            margin-bottom: 25px;
+            border-bottom: 1px dashed #eee;
+            padding-bottom: 15px;
+            transition: all 0.3s ease;
+        }
+        
+        .input-container:hover {
+            border-bottom-color: #FF9E00;
         }
         
         /* Select box styling */
         .stSelectbox>div>div {
-            border-radius: 10px;
-            border: 2px solid #ddd;
+            border-radius: 10px !important;
+            border: 2px solid #ddd !important;
+            margin-bottom: 12px;
         }
         
         .stSelectbox>div>div:focus-within {
-            border-color: #3a7bd5;
-            box-shadow: 0 0 0 2px rgba(58, 123, 213, 0.2);
+            border-color: #FF9E00 !important;
+            box-shadow: 0 0 0 3px rgba(255, 158, 0, 0.2) !important;
         }
         
         /* Radio button styling */
         .stRadio>div {
             background-color: rgba(255, 255, 255, 0.8);
-            padding: 10px;
+            padding: 15px;
             border-radius: 10px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 12px;
+            border: 1px solid #eee;
+        }
+        
+        .stRadio>div:hover {
+            border-color: #FF9E00;
         }
         
         /* Slider styling */
         .stSlider>div>div>div>div {
-            background-color: #3a7bd5;
+            background-color: #FF9E00 !important;
         }
         
-        /* Button styling */
+        /* Button styling - ENHANCED */
         .stButton>button {
-            background: linear-gradient(90deg, #3a7bd5, #00d2ff);
+            background: linear-gradient(90deg, #FF5F6D, #FFC371);
             color: white;
             font-weight: 600;
             border-radius: 10px;
             padding: 12px 24px;
             border: none;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
             transition: all 0.3s ease;
             text-transform: uppercase;
             letter-spacing: 1px;
+            font-size: 16px;
+            width: 100%;
+            margin-top: 15px;
         }
         
         .stButton>button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 7px 20px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(90deg, #FF5F6D, #FFC371);
         }
         
         .stButton>button:active {
             transform: translateY(1px);
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
         }
         
         /* Success message styling */
@@ -193,7 +235,7 @@ st.markdown(
             border-radius: 10px;
             padding: 20px;
             margin: 20px 0;
-            animation: fadeIn 0.5s ease-in-out;
+            animation: fadeIn 0.6s ease-in-out;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
         
@@ -202,25 +244,53 @@ st.markdown(
             to { opacity: 1; transform: translateY(0); }
         }
         
-        /* Sidebar styling */
-        .css-1d391kg {
-            background-color: rgba(20, 40, 80, 0.85);
+        /* Sidebar styling - ENHANCED */
+        [data-testid="stSidebar"] {
+            background: linear-gradient(180deg, rgba(20, 40, 80, 0.95), rgba(30, 60, 100, 0.9)) !important;
+            box-shadow: 2px 0 15px rgba(0, 0, 0, 0.3);
         }
         
-        .css-1d391kg .block-container {
-            padding: 2rem 1rem;
+        [data-testid="stSidebar"] .block-container {
+            padding: 2.5rem 1.5rem;
         }
         
-        /* Two-column layout for form fields */
-        .form-row {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            gap: 20px;
+        /* Input field tooltip icon */
+        .stTooltipIcon {
+            color: #FF9E00 !important;
+            font-size: 20px !important;
         }
         
-        .form-col {
-            flex: 1;
+        /* Tooltip content styling */
+        .stMarkdown div[data-testid="stMarkdownContainer"] p {
+            font-size: 15px !important;
+            line-height: 1.6 !important;
+        }
+        
+        /* Form group styling */
+        .form-group {
+            background-color: rgba(255, 255, 255, 0.6);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+            border-left: 4px solid #FF9E00;
+        }
+        
+        .form-group-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #FF9E00;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+        
+        /* Divider styling */
+        .custom-divider {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #FF9E00, transparent);
+            margin: 30px 0;
+            opacity: 0.7;
         }
     </style>
     """,
@@ -257,108 +327,62 @@ with st.sidebar:
 
 # Main content
 if model_type == "Bank Customer":
-<<<<<<< HEAD
-    st.header("🏦 Bank Customer Churn Prediction")
-
-    # Input fields with custom style
-    with st.form(key="bank_form"):
-        credit_score = st.number_input("Credit Score", min_value=300, max_value=900, step=1)
-        gender = st.selectbox("Gender", ["Male", "Female"])
-        age = st.number_input("Age", min_value=18, max_value=100)
-        tenure = st.number_input("Tenure (Years)", min_value=0, max_value=10)
-        balance = st.number_input("Balance")
-        num_of_products = st.number_input("Number of Products", min_value=1, max_value=4)
-        has_cr_card = st.radio("Has Credit Card?", [0, 1])
-        is_active_member = st.radio("Is Active Member?", [0, 1])
-        estimated_salary = st.number_input("Estimated Salary")
-        satisfaction_score = st.slider("Satisfaction Score", 1, 5)
-        card_type = st.selectbox("Card Type", ["DIAMOND", "GOLD", "SILVER", "PLATINUM"])
-        points_earned = st.number_input("Points Earned", min_value=0)
-        submit_button = st.form_submit_button("Predict")
-=======
     st.markdown("<div class='form-container'><h2 class='section-header'>🏦 Bank Customer Churn Prediction</h2>", unsafe_allow_html=True)
     
     with st.form(key="bank_form"):
+        # Basic Customer Information Section
+        st.markdown("<div class='form-group'><h3 class='form-group-title'>📋 Customer Profile</h3>", unsafe_allow_html=True)
+        
+        gender = st.selectbox("Gender", ["Male", "Female"])
+        age = st.number_input("Age", min_value=18, max_value=100, help="Customer's age")
+        credit_score = st.number_input("Credit Score", min_value=300, max_value=900, step=1, help="Customer's credit score (300-900)")
+        
+        st.markdown("</div>", unsafe_allow_html=True)
+        
+        # Account Information Section
+        st.markdown("<div class='form-group'><h3 class='form-group-title'>💰 Account Information</h3>", unsafe_allow_html=True)
+        
+        tenure = st.number_input("Tenure (Years)", min_value=0, max_value=10, help="Years as a customer")
+        balance = st.number_input("Balance", help="Current account balance")
+        estimated_salary = st.number_input("Estimated Salary", help="Customer's estimated annual salary")
+        
+        st.markdown("</div>", unsafe_allow_html=True)
+        
+        # Product Usage Section
+        st.markdown("<div class='form-group'><h3 class='form-group-title'>🛒 Product Usage</h3>", unsafe_allow_html=True)
+        
+        num_of_products = st.number_input("Number of Products", min_value=1, max_value=4, help="Number of bank products used")
+        has_cr_card = st.radio("Has Credit Card?", [0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
+        card_type = st.selectbox("Card Type", ["DIAMOND", "GOLD", "SILVER", "PLATINUM"])
+        
+        st.markdown("</div>", unsafe_allow_html=True)
+        
+        # Engagement Metrics Section
+        st.markdown("<div class='form-group'><h3 class='form-group-title'>📊 Engagement Metrics</h3>", unsafe_allow_html=True)
+        
+        is_active_member = st.radio("Is Active Member?", [0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
+        satisfaction_score = st.slider("Satisfaction Score", 1, 5, help="Customer satisfaction rating (1-5)")
+        points_earned = st.number_input("Points Earned", min_value=0, help="Reward points earned")
+        
+        st.markdown("</div>", unsafe_allow_html=True)
+        
+        # Divider
+        st.markdown("<div class='custom-divider'></div>", unsafe_allow_html=True)
+        
+        # Buttons
         col1, col2 = st.columns(2)
-        
         with col1:
-            credit_score = st.number_input("Credit Score", min_value=300, max_value=900, step=1, help="Customer's credit score (300-900)")
-            gender = st.selectbox("Gender", ["Male", "Female"])
-            age = st.number_input("Age", min_value=18, max_value=100, help="Customer's age")
-            tenure = st.number_input("Tenure (Years)", min_value=0, max_value=10, help="Years as a customer")
-            balance = st.number_input("Balance", help="Current account balance")
-        
-        with col2:
-            num_of_products = st.number_input("Number of Products", min_value=1, max_value=4, help="Number of bank products used")
-            has_cr_card = st.radio("Has Credit Card?", [0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
-            is_active_member = st.radio("Is Active Member?", [0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
-            estimated_salary = st.number_input("Estimated Salary", help="Customer's estimated annual salary")
-            satisfaction_score = st.slider("Satisfaction Score", 1, 5, help="Customer satisfaction rating (1-5)")
-        
-        st.markdown("<hr>", unsafe_allow_html=True)
-        
-        col3, col4 = st.columns(2)
-        
-        with col3:
-            card_type = st.selectbox("Card Type", ["DIAMOND", "GOLD", "SILVER", "PLATINUM"])
-        
-        with col4:
-            points_earned = st.number_input("Points Earned", min_value=0, help="Reward points earned")
-        
-        col5, col6 = st.columns(2)
-        
-        with col5:
             submit_button = st.form_submit_button("📊 Predict Churn")
-        
-        with col6:
+        with col2:
             clear_button = st.form_submit_button("🔄 Clear Form")
 
         if clear_button:
             st.experimental_rerun()
->>>>>>> 79a1111e33dfec9c21c348fd42f2bac3e50e71ee
 
         if submit_button:
             if (credit_score == 0 or age == 0 or balance == 0 or estimated_salary == 0 or points_earned == 0):
                 st.error("Please fill in all the fields correctly before submitting.")
             else:
-<<<<<<< HEAD
-                gender_encoded = [1 if gender == "Male" else 0, 1 if gender == "Female" else 0]
-                card_type_encoded = [1 if card_type == "DIAMOND" else 0, 1 if card_type == "GOLD" else 0, 1 if card_type == "SILVER" else 0, 1 if card_type == "PLATINUM" else 0]
-                features = np.array([credit_score, age, tenure, balance, num_of_products, has_cr_card, is_active_member, estimated_salary, satisfaction_score, points_earned] + gender_encoded + card_type_encoded)
-                result = predict_churn(bank_model, bank_scaler, features)
-                st.success(f"Predicted Churn Status: {result}")
-
-elif model_type == "Telecom Customer":
-    st.header("📞 Telecom Customer Churn Prediction")
-    with st.form(key="telecom_form"):
-        tenure = st.number_input("Tenure", min_value=0, max_value=100)
-        monthly_charges = st.number_input("Monthly Charges")
-        total_charges = st.number_input("Total Charges")
-        contract = st.selectbox("Contract", ["Month-to-month", "One year", "Two year"])
-        internet_service = st.selectbox("Internet Service", ["Fiber optic", "DSL", "No"])
-        payment_method = st.selectbox("Payment Method", ["Electronic check", "Mailed check", "Bank transfer (automatic)", "Credit card (automatic)"])
-        paperless_billing = st.radio("Paperless Billing?", [0, 1])
-        gender = st.selectbox("Gender", ["Male", "Female"])
-        submit_button = st.form_submit_button("Predict")
-
-        if submit_button:
-            if (monthly_charges == 0 or total_charges == 0 or tenure == 0):
-                st.error("Please fill in all the fields correctly before submitting.")
-            else:
-                contract_encoded = [1 if contract == "Month-to-month" else 0, 1 if contract == "One year" else 0, 1 if contract == "Two year" else 0]
-                internet_service_encoded = [1 if internet_service == "Fiber optic" else 0, 1 if internet_service == "DSL" else 0, 1 if internet_service == "No" else 0]
-                payment_method_encoded = [1 if payment_method == "Electronic check" else 0, 1 if payment_method == "Mailed check" else 0, 1 if payment_method == "Bank transfer (automatic)" else 0, 1 if payment_method == "Credit card (automatic)" else 0]
-                gender_encoded = [1 if gender == "Male" else 0, 1 if gender == "Female" else 0]
-                features = np.array([paperless_billing, monthly_charges, total_charges, tenure] + contract_encoded + internet_service_encoded + payment_method_encoded + gender_encoded)
-                result = predict_churn(telecom_model, telecom_scaler, features)
-                st.success(f"Predicted Churn Status: {result}")
-
-st.sidebar.markdown("""
-### About
-This app uses machine learning models to predict customer churn in Bank and Telecom sectors.
-Developed by Fathima Shabna Ilmi
-""")
-=======
                 with st.spinner("Analyzing customer data..."):
                     # Add a slight delay for effect
                     import time
@@ -400,26 +424,40 @@ elif model_type == "Telecom Customer":
     st.markdown("<div class='form-container'><h2 class='section-header'>📞 Telecom Customer Churn Prediction</h2>", unsafe_allow_html=True)
     
     with st.form(key="telecom_form"):
+        # Customer Profile Section
+        st.markdown("<div class='form-group'><h3 class='form-group-title'>👤 Customer Demographics</h3>", unsafe_allow_html=True)
+        
+        gender = st.selectbox("Gender", ["Male", "Female"])
+        tenure = st.number_input("Tenure (Months)", min_value=0, max_value=100, help="How long the customer has been with the company")
+        
+        st.markdown("</div>", unsafe_allow_html=True)
+        
+        # Billing Section
+        st.markdown("<div class='form-group'><h3 class='form-group-title'>💵 Billing Information</h3>", unsafe_allow_html=True)
+        
+        monthly_charges = st.number_input("Monthly Charges", min_value=0.0, help="Monthly bill amount")
+        total_charges = st.number_input("Total Charges", min_value=0.0, help="Total amount charged to date")
+        paperless_billing = st.radio("Paperless Billing?", [0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
+        payment_method = st.selectbox("Payment Method", ["Electronic check", "Mailed check", "Bank transfer (automatic)", "Credit card (automatic)"])
+        
+        st.markdown("</div>", unsafe_allow_html=True)
+        
+        # Service Section
+        st.markdown("<div class='form-group'><h3 class='form-group-title'>🌐 Service Details</h3>", unsafe_allow_html=True)
+        
+        contract = st.selectbox("Contract Type", ["Month-to-month", "One year", "Two year"], help="Contract length")
+        internet_service = st.selectbox("Internet Service", ["Fiber optic", "DSL", "No"], help="Type of internet service")
+        
+        st.markdown("</div>", unsafe_allow_html=True)
+        
+        # Divider
+        st.markdown("<div class='custom-divider'></div>", unsafe_allow_html=True)
+        
+        # Buttons
         col1, col2 = st.columns(2)
-        
         with col1:
-            tenure = st.number_input("Tenure (Months)", min_value=0, max_value=100, help="How long the customer has been with the company")
-            monthly_charges = st.number_input("Monthly Charges", min_value=0.0, help="Monthly bill amount")
-            total_charges = st.number_input("Total Charges", min_value=0.0, help="Total amount charged to date")
-            gender = st.selectbox("Gender", ["Male", "Female"])
-        
-        with col2:
-            contract = st.selectbox("Contract Type", ["Month-to-month", "One year", "Two year"], help="Contract length")
-            internet_service = st.selectbox("Internet Service", ["Fiber optic", "DSL", "No"], help="Type of internet service")
-            payment_method = st.selectbox("Payment Method", ["Electronic check", "Mailed check", "Bank transfer (automatic)", "Credit card (automatic)"])
-            paperless_billing = st.radio("Paperless Billing?", [0, 1], format_func=lambda x: "Yes" if x == 1 else "No")
-        
-        col3, col4 = st.columns(2)
-        
-        with col3:
             submit_button = st.form_submit_button("📊 Predict Churn")
-        
-        with col4:
+        with col2:
             clear_button = st.form_submit_button("🔄 Clear Form")
 
         if clear_button:
@@ -468,12 +506,18 @@ elif model_type == "Telecom Customer":
 
     st.markdown("</div>", unsafe_allow_html=True)
 
-# Footer
+# Footer with animated gradient
 st.markdown("""
-<div style='text-align: center; margin-top: 40px; padding: 20px; background-color: rgba(0,0,0,0.5); border-radius: 10px;'>
-    <p style='color: #ddd; font-size: 0.8rem;'>
+<div style='text-align: center; margin-top: 40px; padding: 20px; background: linear-gradient(90deg, rgba(0,0,0,0.7), rgba(0,0,0,0.5), rgba(0,0,0,0.7)); border-radius: 10px; animation: gradientBG 10s ease infinite;'>
+    <p style='color: #ddd; font-size: 0.9rem;'>
         © 2025 Churn Prediction Tool | Built with Streamlit
     </p>
 </div>
+<style>
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+</style>
 """, unsafe_allow_html=True)
->>>>>>> 79a1111e33dfec9c21c348fd42f2bac3e50e71ee
