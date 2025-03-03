@@ -24,7 +24,7 @@ The datasets used to train the models can be found on Kaggle:
 ## Installation
 1. Clone the repository:
    ```bash
-   git clone (https://github.com/ShabnaIlmi/NewRetentionAI)
+   git clone (https://github.com/ShabnaIlmi/RetentionAI)
    cd RetentionAI
    ```
 
