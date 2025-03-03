@@ -51,8 +51,8 @@ RetentionAI/
 ├─ .git/               
 ├─ assets/             
 ├─ app.py              
-├─ bank_churn_model.pkl 
-├─ telecom_churn_model.pkl 
+├─ bank_churn_model.pkl
+├─ telecom_churn_model.pkl
 ├─ scaler_bank.pkl      
 ├─ scaler_telecom.pkl  
 ├─ requirements.txt     
@@ -66,5 +66,7 @@ This project is licensed under the **MIT License**.
 - Fathima Shabna Ilmi
 
 ## Contact
-If you have any questions, feel free to contact me at **Shabna Ilmi - ilmishabna03@gmail.com)**.
+If you have any questions, feel free to contact me at **ilmishabna03@gmail.com**.
 
+- LinkedIn: [Fathima Shabna Ilmi](https://www.linkedin.com/in/shabna-ilmi/)
+- Live Demo: [RetentionAI Live Demo](https://retentionai-app.streamlit.app/)
